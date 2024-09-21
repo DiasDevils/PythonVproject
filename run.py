@@ -92,14 +92,20 @@ def get_delivery():
         return get_delivery()  
 
 
+def update_delivery(data):
+    print("Updating deliveries...\n")
+    delivery_worksheet = SHEET.worksheet('delivery')
+    delivery_row = list(data.values())
+    delivery_worksheet.append_row(delivery_row)
+    print("Deliveries updated successfully!\n")
 # Delivery data
 data = get_delivery()
-
 # Print the returned data (will print None if skipped)
 if data:
-    print("Returned delivery data:", data)
+    update_delivery(data)
+    # print("Updated with delivery data:", data)
 else:
-    print("No delivery data entered.")
+    print("No delivery data updated.")
 
 
 
@@ -107,7 +113,7 @@ else:
 
 
 
-# """2. Get usage input from user"""
+# """3. Get usage input from user"""
 # def get_usage():
 #     # Placeholder function to show what comes next
 #     print("Now moving to the usage input...")
