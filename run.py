@@ -24,16 +24,18 @@ SHEET = GSPREAD_CLIENT.open('Vproject')
 
 """1. Get delivery input from user"""
 def get_delivery():
-    # Ask if the user wants to input delivery data
     print("Welcome to the Vaccine Stock Tracking System. This system is designed to help you efficiently monitor and manage your vaccine inventory. It provides real-time updates on vaccine deliveries, usage tracking, expiration dates, and usage reports, ensuring that you always have accurate records and can maintain optimal vaccine stock levels.")
+    # Ask if the user wants to input delivery data
     response = input("Do you need to input delivery data? (yes/no): ").strip().lower()
     
+    # Exit this function if no deliveries
     if response == "no":
         print("Skipping delivery input...")
-        return  # Exit this function if the user chooses to skip delivery
+        return None  
 
     elif response == "yes":
         print("Please enter vaccine delivery data in steps.")
+        
         # Batch number validation
         while True:
             try:
@@ -71,17 +73,45 @@ def get_delivery():
             except ValueError:
                 print("Invalid input. Please enter a valid integer for the quantity.")
         
+        # Create dictionary to store the inputted data
+        delivery_data = {
+            "batch": batch, 
+            "delivery_date": delivery_date.strftime("%d/%m/%Y"),
+            "vaccine": vaccine,  
+            "quantity": quantity
+        }
+
         # Print confirmation
-        print(f"The data you entered for delivery is Batch {batch}, delivered on the {date_str}. The vaccine name is {vaccine} and the quantity is {quantity}")
+        print(f"The data you entered for delivery is Batch Number {batch}, delivered on {date_str}. The vaccine name is {vaccine} and the quantity is {quantity}")
+        
+        # Return the data dictionary
+        return delivery_data
+    # Re-run the function if the input is invalid
     else:
         print("Invalid input. Please answer with 'yes' or 'no'.")
-        get_delivery()  # Re-run the function if the input is invalid
+        return get_delivery()  
 
-"""2. Get usage input from user"""
-def get_usage():
-    # Placeholder function to show what comes next
-    print("Now moving to the usage input...")
 
-# Call the function to start the process
-get_delivery()
-get_usage()
+# Delivery data
+data = get_delivery()
+
+# Print the returned data (will print None if skipped)
+if data:
+    print("Returned delivery data:", data)
+else:
+    print("No delivery data entered.")
+
+
+
+
+
+
+
+# """2. Get usage input from user"""
+# def get_usage():
+#     # Placeholder function to show what comes next
+#     print("Now moving to the usage input...")
+
+# # Call the function to start the process
+# get_delivery()
+# get_usage()
