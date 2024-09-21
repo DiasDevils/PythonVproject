@@ -171,3 +171,25 @@ if data:
 else:
     print("No used vaccine data updated.")        
 
+
+#
+#
+#
+# to fix logic issue i will have to sum all where batch and vacname are the same in deliveries
+# and in usage 
+# and keep the oldest delivery date
+#
+# delivery
+# if concat batch&vacname >1 then sum vials for
+#  these rows and keep oldest delivery date
+# else continue running loop
+# usage
+# if batch > 1 then sum vials
+# else continue running loop
+#
+# one sums are ready do math calculations on stock
+# delivery - used = stock left
+# add 30 days to delivery date to get expiry date
+#
+# to do notification
+# if expiry date < today then expired, else "in date"
