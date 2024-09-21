@@ -1,4 +1,4 @@
-""" connecting to gcp and having access to google sheets"""
+# connecting to gcp and having access to google sheets #
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -16,17 +16,18 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Vproject')
 
-""" code to check if getting data is working """
+# code to check if getting data is working #
+
 # delivery = SHEET.worksheet('delivery')
 # data = delivery.get_all_values()
 # print(data)
 
 
-"""1. Get delivery input from user"""
+#  1. Function to Get delivery input from user. #
 def get_delivery():
     print("Welcome to the Vaccine Stock Tracking System. This system is designed to help you efficiently monitor and manage your vaccine inventory. It provides real-time updates on vaccine deliveries, usage tracking, expiration dates, and usage reports, ensuring that you always have accurate records and can maintain optimal vaccine stock levels.")
     # Ask if the user wants to input delivery data
-    response = input("Do you need to input delivery data? (yes/no): ").strip().lower()
+    response = input("Do you need to input DELIVERY data? (yes/no): ").strip().lower()
     
     # Exit this function if no deliveries
     if response == "no":
@@ -100,6 +101,7 @@ def update_delivery(data):
     print("Deliveries updated successfully!\n")
 # Delivery data
 data = get_delivery()
+
 # Print the returned data (will print None if skipped)
 if data:
     update_delivery(data)
@@ -113,11 +115,59 @@ else:
 
 
 
-# """3. Get usage input from user"""
-# def get_usage():
-#     # Placeholder function to show what comes next
-#     print("Now moving to the usage input...")
+"""3. Get usage input from user"""
+def get_usage():
+    print("Now moving to the usage input...\n")
+    response = input("Do you need to input USAGE data? (yes/no): ").strip().lower()
 
-# # Call the function to start the process
-# get_delivery()
-# get_usage()
+    if response == "no":
+        print("Thank you for your custom. Come back soon. Goodbye!")
+        return None
+    elif response == "yes":
+        print("Please enter vaccine usage data.")
+
+        #Batch validation
+        while True:
+            try:
+                batch= int(input("Enter the batch number (integer):"))
+                break
+            except ValueError:
+                print("Invalid input: Please enter a valid integer for the batch number.")
+        # Quantity Validation
+        while True:
+            try:
+                quantity_used =int(input("Enter the quantity of vials used (integer):"))
+                break
+            except ValueError:
+                print("Invalid input. Please enter a valid integer for the quantity used. ")
+        
+        #Create usage dictionary to store data
+        usage_data={
+            "batch":batch,
+            "quantity_used": quantity_used
+        }
+         # Print confirmation
+        print(f"The data you entered for usage is Batch Number {batch} with {quantity_used} vials used.")
+        return usage_data
+    
+    else:
+        print("Invalid input. Please answer 'yes' or 'no'.")
+        return get_usage()
+
+
+def update_use(data):
+    print("Updating used vaccines data...\n")
+    use_worksheet = SHEET.worksheet('used')
+    use_row = list(data.values())
+    use_worksheet.append_row(use_row)
+    print("Used vaccines data updated successfully!\n")
+# Delivery data
+data = get_usage()
+
+# Print the returned data (will print None if skipped)
+if data:
+    update_use(data)
+    # print("Updated with used vaccines data:", data)
+else:
+    print("No used vaccine data updated.")        
+
