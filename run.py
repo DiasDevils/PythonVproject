@@ -239,8 +239,11 @@ def calculate_stock():
 
         last_delivery_str = last_delivery_date.strftime("%d/%m/%Y")
         expiry_date_str = expiry_date.strftime("%d/%m/%Y")
+        
+        today = datetime.today()
+        status = "Expired" if expiry_date <= today else "In Date"
 
-        stock_data.append([batch, vaccine, delivered_qty, used_qty, stock_left, last_delivery_str, expiry_date_str])
+        stock_data.append([batch, vaccine, delivered_qty, used_qty, stock_left, last_delivery_str, expiry_date_str, status])
 
     return stock_data
 
@@ -248,7 +251,7 @@ def update_stock(stock_data):
     print("Updating stock data...\n")
     stock_worksheet = SHEET.worksheet('stock')
     stock_worksheet.clear()
-    headers = ['B', 'VN', 'DQ', 'UQ', 'S', 'LDD', 'ED']
+    headers = ['B', 'VN', 'DQ', 'UQ', 'SK', 'LDD', 'ED', "ST"]
     stock_worksheet.append_row(headers)
     
     for row in stock_data:
@@ -260,7 +263,7 @@ def update_stock(stock_data):
     print("Important to know:\n")
     print ("B = Batch Number   ||  VN = Vaccine Name" )
     print ("DQ = Delivered Quantity  ||  UQ = Used Quantity")
-    print ("S = Stock Available Now")
+    print ("SK = Stock Available Now  ||  ST = Status ")
     print ("LDD = Last Delivery Date   ||  ED = Expiry Date \n")
     print("Current Stock Data:")
     print(tabulate(stock_data, headers=headers, tablefmt='grid'))
