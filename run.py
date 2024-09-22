@@ -257,7 +257,7 @@ def update_stock(stock_data):
     for row in stock_data:
         stock_worksheet.append_row(row)
     print("Stock data updated successfully!\n")
-    print("Please see table Vaccine Stock table below.\n")
+    print("Please see Vaccine Stock table below.\n")
 
     
     print("Important to know:\n")
