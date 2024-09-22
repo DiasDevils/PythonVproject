@@ -50,7 +50,7 @@ SHEET = GSPREAD_CLIENT.open('Vproject')
 #  1. Function to Get delivery input from user. #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_delivery():
-    print("Welcome to the Vaccine Stock Tracking System.")
+    print("Welcome to the Flu Vaccine Stock Tracking System.")
     response = input("Do you need to input DELIVERY data? (yes/no): ").strip().lower()
     
     if response == "no":
@@ -248,13 +248,23 @@ def update_stock(stock_data):
     print("Updating stock data...\n")
     stock_worksheet = SHEET.worksheet('stock')
     stock_worksheet.clear()
-    headers = ['Batch', 'Vname', 'DelQty', 'UsedQty', 'Stock', 'LastDelDate', 'ExpDate']
+    headers = ['B', 'V', 'DQ', 'UQ', 'S', 'LDD', 'ED']
     stock_worksheet.append_row(headers)
     
     for row in stock_data:
         stock_worksheet.append_row(row)
     print("Stock data updated successfully!\n")
+    print("Please see table Vaccine Stock table below.\n")
 
+    
+    print("Important to know:")
+    print ("B = Batch Number")
+    print ("VN = Vaccine Name")
+    print ("DQ = Delivered Quantity")
+    print ("UQ = Used Quantity")
+    print ("S = Current Stock")
+    print ("LDD = Last Delivery Date")
+    print ("ED = Expiry Date")
     print("Current Stock Data:")
     print(tabulate(stock_data, headers=headers, tablefmt='grid'))
 
