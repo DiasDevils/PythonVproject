@@ -261,9 +261,9 @@ def update_stock(stock_data):
 
     
     print("Important to know:\n")
-    print ("B = Batch Number   ||  VN = Vaccine Name" )
-    print ("DQ = Delivered Quantity  ||  UQ = Used Quantity")
-    print ("SK = Stock Available Now  ||  ST = Status ")
+    print ("B   = Batch Number         ||  VN = Vaccine Name" )
+    print ("DQ  = Delivered Quantity   ||  UQ = Used Quantity")
+    print ("SK  = Stock Available Now  ||  ST = Status ")
     print ("LDD = Last Delivery Date   ||  ED = Expiry Date \n")
     print("Current Stock Data:")
     print(tabulate(stock_data, headers=headers, tablefmt='grid'))
