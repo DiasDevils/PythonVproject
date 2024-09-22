@@ -257,7 +257,7 @@ def update_stock(stock_data):
     print("Please see table Vaccine Stock table below.\n")
 
     
-    print("Important to know:")
+    print("Important to know:\n")
     print ("B = Batch Number   ||  VN = Vaccine Name" )
     print ("DQ = Delivered Quantity  ||  UQ = Used Quantity")
     print ("S = Stock Available Now")
