@@ -235,6 +235,8 @@ def update_stock(stock_data):
         stock_worksheet.append_row(row)
     print("Stock data updated successfully!\n")
 
+    print("Current Stock Data:")
+    print(tabulate(stock_data, headers=headers, tablefmt='grid'))
 
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 # 4. Main function to handle workflow #
