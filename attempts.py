@@ -204,3 +204,54 @@ def get_delivery():
 
 
 """ """" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" """" """
+# calculate stock but no delivery date accounted for
+def calculate_stock():
+    # Get all delivery data from the 'delivery' sheet
+    delivery_worksheet = SHEET.worksheet('delivery')
+    # Skip header row
+    delivery_data = delivery_worksheet.get_all_values()[1:]  
+    
+    # Get all usage data from the 'used' sheet
+    usage_worksheet = SHEET.worksheet('used')
+    usage_data = usage_worksheet.get_all_values()[1:]
+
+    # Create dictionaries to hold summed values for delivery and used
+    delivery_sums = {}
+    usage_sums = {}
+
+    # Sum delivery data by batch and vaccine name with unique key
+    for row in delivery_data:
+        batch = row[0]
+        vaccine = row[2]
+        quantity = int(row[3])
+        # Key based on batch and vaccine
+        key = (batch, vaccine)  
+        if key in delivery_sums:
+            delivery_sums[key] += quantity
+        else:
+            delivery_sums[key] = quantity
+
+    # Sum usage data by batch and vaccine name
+    for row in usage_data:
+        batch = row[0] 
+        vaccine = row[1]
+        quantity_used = int(row[2])
+        # Key based on batch and vaccine
+        key = (batch, vaccine)  
+        if key in usage_sums:
+            usage_sums[key] += quantity_used
+        else:
+            usage_sums[key] = quantity_used
+
+    # Calculate the stock left (delivery - used)
+    stock_data = []
+    for key, delivered_qty in delivery_sums.items():
+        batch, vaccine = key
+        # If no usage, treat it as 0
+        used_qty = usage_sums.get(key, 0)  
+        stock_left = delivered_qty - used_qty
+        stock_data.append([batch, vaccine, delivered_qty, used_qty, stock_left])
+
+    return stock_data
+stock = calculate_stock()
+print(f"Your stock is {stock}")

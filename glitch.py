@@ -1,23 +1,23 @@
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-# connecting to gcp and having access to google sheets #
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-import gspread
-from google.oauth2.service_account import Credentials
-import re
-from datetime import datetime, timedelta
-from tabulate import tabulate
+# ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+# # connecting to gcp and having access to google sheets #
+# ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+# import gspread
+# from google.oauth2.service_account import Credentials
 
+# import re
+# from datetime import datetime
+# from datetime import timedelta
 
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+# SCOPE = [
+#     "https://www.googleapis.com/auth/spreadsheets",
+#     "https://www.googleapis.com/auth/drive.file",
+#     "https://www.googleapis.com/auth/drive"
+#     ]
 
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('Vproject')
+# CREDS = Credentials.from_service_account_file('creds.json')
+# SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+# GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+# SHEET = GSPREAD_CLIENT.open('Vproject')
 
 
 # code to check if getting data is working #
@@ -30,16 +30,19 @@ SHEET = GSPREAD_CLIENT.open('Vproject')
 #  1. Function to Get delivery input from user. #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_delivery():
-    print("Welcome to the Vaccine Stock Tracking System.")
+    print("Welcome to the Vaccine Stock Tracking System. This system is designed to help you efficiently monitor and manage your vaccine inventory. It provides real-time updates on vaccine deliveries, usage tracking, expiration dates, and usage reports, ensuring that you always have accurate records and can maintain optimal vaccine stock levels.\n")
+    # Ask if the user wants to input delivery data
     response = input("Do you need to input DELIVERY data? (yes/no): ").strip().lower()
     
+    # Exit this function if no deliveries
     if response == "no":
         print("Skipping delivery input...")
         return None  
+
     elif response == "yes":
         print("Please enter vaccine delivery data in steps.")
         
-        # Batch validation
+        # Batch number validation
         while True:
             try:
                 batch = int(input("Step 1. Enter the batch number (integer): "))
@@ -89,40 +92,53 @@ def get_delivery():
         
         # Return the data dictionary
         return delivery_data
+    # Re-run the function if the input is invalid
     else:
         print("Invalid input. Please answer with 'yes' or 'no'.")
         return get_delivery()  
 
-# Function to update the delivery worksheet
+
 def update_delivery(data):
     print("Updating deliveries...\n")
     delivery_worksheet = SHEET.worksheet('delivery')
     delivery_row = list(data.values())
     delivery_worksheet.append_row(delivery_row)
     print("Deliveries updated successfully!\n")
+# Delivery data
+data = get_delivery()
+
+# Print the returned data (will print None if skipped)
+if data:
+    update_delivery(data)
+    # print("Updated with delivery data:", data)
+else:
+    print("No delivery data updated.")
+
+
+
+
 
 
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 # 2. Get usage input from user #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_usage():
-    print("Now moving to the used vaccines input...\n")
+    print("Now moving to the usage input...\n")
     response = input("Do you need to input USAGE data? (yes/no): ").strip().lower()
 
     if response == "no":
-        print("Skipping usage input.")
+        print("Thank you for your using the system. Goodbye!")
         return None
     elif response == "yes":
         print("Please enter vaccine usage data.")
 
-        # Batch validation
+        #Batch validation
         while True:
             try:
                 batch= int(input("Enter the batch number (integer):"))
                 break
             except ValueError:
                 print("Invalid input: Please enter a valid integer for the batch number.")
-
         # Vaccine name validation
         valid_vaccines = ["flu-one", "flu-two"]
         while True:
@@ -135,48 +151,63 @@ def get_usage():
         # Quantity Validation
         while True:
             try:
-                quantity_used = int(input("Enter the quantity of vials used (integer):"))
+                quantity_used =int(input("Enter the quantity of vials used (integer):"))
                 break
             except ValueError:
-                print("Invalid input. Please enter a valid integer for the quantity used.")
+                print("Invalid input. Please enter a valid integer for the quantity used. ")
         
-        # Create usage dictionary to store data
-        usage_data = {
-            "batch": batch,
+        #Create usage dictionary to store data
+        usage_data={
+            "batch":batch,
             "vaccine": vaccine,  
             "quantity_used": quantity_used
         }
-
-        # Print confirmation
+         # Print confirmation
         print(f"The data you entered for usage is Batch Number {batch} of vaccine name {vaccine} with {quantity_used} vials used.")
         return usage_data
+    
     else:
         print("Invalid input. Please answer 'yes' or 'no'.")
         return get_usage()
 
-# Function to update the usage worksheet
+
 def update_use(data):
     print("Updating used vaccines data...\n")
     use_worksheet = SHEET.worksheet('used')
     use_row = list(data.values())
     use_worksheet.append_row(use_row)
     print("Used vaccines data updated successfully!\n")
+# Delivery data
+data = get_usage()
+
+# Print the returned data (will print None if skipped)
+if data:
+    update_use(data)
+    # print("Updated with used vaccines data:", data)
+else:
+    print("No used vaccine data updated.")        
 
 
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 # 3. Calculating stock from delivery and usage #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+
 def calculate_stock():
+    # Get all delivery data from the 'delivery' sheet
     delivery_worksheet = SHEET.worksheet('delivery')
+    # Skip header row
     delivery_data = delivery_worksheet.get_all_values()[1:]  
     
+    # Get all usage data from the 'used' sheet
     usage_worksheet = SHEET.worksheet('used')
-    usage_data = usage_worksheet.get_all_values()[1:]  
+    usage_data = usage_worksheet.get_all_values()[1:] 
 
+    # Create dictionaries to hold summed values for delivery and used
     delivery_sums = {}
     latest_delivery_dates = {}
     usage_sums = {}
 
+    # Sum delivery data by batch and vaccine name
     for row in delivery_data:
         batch = row[0]
         delivery_date = datetime.strptime(row[1], "%d/%m/%Y")
@@ -185,17 +216,20 @@ def calculate_stock():
     
         key = (batch, vaccine)  
 
+        # Update delivery sums
         if key in delivery_sums:
             delivery_sums[key] += quantity
         else:
             delivery_sums[key] = quantity
 
+        # Track the latest delivery date
         if key in latest_delivery_dates:
             if delivery_date > latest_delivery_dates[key]:
                 latest_delivery_dates[key] = delivery_date
         else:
             latest_delivery_dates[key] = delivery_date
 
+    # Sum usage data by batch and vaccine as well
     for row in usage_data:
         batch = row[0] 
         vaccine = row[1]
@@ -203,26 +237,32 @@ def calculate_stock():
 
         key = (batch, vaccine)
 
+        # Update usage sums
         if key in usage_sums:
             usage_sums[key] += quantity_used
         else:
             usage_sums[key] = quantity_used
 
+    # Calculate stock left (delivery - used)
     stock_data = []
     for key, delivered_qty in delivery_sums.items():
         batch, vaccine = key
+        # If no usage, treat it as 0
         used_qty = usage_sums.get(key, 0)  
         stock_left = delivered_qty - used_qty
 
+        # Get the latest delivery date and calculate expiry date (30 days shelf life)
         last_delivery_date = latest_delivery_dates[key]
         expiry_date = last_delivery_date + timedelta(days=30)
 
+        # Format the dates to dd/mm/yyyy
         last_delivery_str = last_delivery_date.strftime("%d/%m/%Y")
         expiry_date_str = expiry_date.strftime("%d/%m/%Y")
 
         stock_data.append([batch, vaccine, delivered_qty, used_qty, stock_left, last_delivery_str, expiry_date_str])
 
     return stock_data
+
 
 def update_stock(stock_data):
     print("Updating stock data...\n")
@@ -231,31 +271,43 @@ def update_stock(stock_data):
     headers = ['Batch Number', 'Vaccine Name', 'Delivered Quantity', 'Used Quantity', 'Stock Left', 'Last Delivery Date', 'Expiry Date']
     stock_worksheet.append_row(headers)
     
+    # Loop through the stock data and append each row
     for row in stock_data:
         stock_worksheet.append_row(row)
     print("Stock data updated successfully!\n")
 
+stock_data = calculate_stock()
+
+# DOES NOT WORK
+# Update the stock sheet with the calculated stock data
+# if stock_data:
+#     update_stock(stock_data)
+# else:
+#     print("No new stock updated.")
+
+
+# stock = calculate_stock()
+# print(f"Your stock is {stock}")
 
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 # 4. Main function to handle workflow #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def main():
-    # Get delivery data
+    # Delivery
     delivery_data = get_delivery()
-    if delivery_data:
-        update_delivery(delivery_data)
-    
-    # Get usage data
+    # Used
     usage_data = get_usage()
-    if usage_data:
-        update_use(usage_data)
 
-    # Calculate and update stock data
-    stock_data = calculate_stock()
+    # If both delivery and used are No, skip stock update
+    if not delivery_data and not usage_data:
+        print("No delivery or usage data entered. Stock update skipped.\n")
+        return
+
+    # Only proceed if there’s actual stock data to update
     if stock_data:
         update_stock(stock_data)
     else:
         print("No new stock data to update.\n")
 
-# Run the main function
 main()
+
