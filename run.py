@@ -291,3 +291,9 @@ def main():
 
 # Run the main function
 main()
+
+#
+# if used qty > del qty throw an error
+# if used vac does not have deliv data print that it wont show in table
+# unless delivery equivalent is entered
+#
