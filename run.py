@@ -133,6 +133,15 @@ def get_usage():
                 break
             except ValueError:
                 print("Invalid input: Please enter a valid integer for the batch number.")
+        # Vaccine name validation
+        valid_vaccines = ["flu-one", "flu-two"]
+        while True:
+            vaccine = input("Step 3. Enter the vaccine name (flu-one or flu-two): ").strip().lower()
+            if vaccine in valid_vaccines:
+                break
+            else:
+                print("Invalid vaccine name. Please enter 'flu-one' or 'flu-two'.")
+
         # Quantity Validation
         while True:
             try:
@@ -144,10 +153,11 @@ def get_usage():
         #Create usage dictionary to store data
         usage_data={
             "batch":batch,
+            "vaccine": vaccine,  
             "quantity_used": quantity_used
         }
          # Print confirmation
-        print(f"The data you entered for usage is Batch Number {batch} with {quantity_used} vials used.")
+        print(f"The data you entered for usage is Batch Number {batch} of vaccine name {vaccine} with {quantity_used} vials used.")
         return usage_data
     
     else:
