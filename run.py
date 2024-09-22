@@ -21,7 +21,7 @@ SHEET = build('sheets', 'v4', credentials=credentials).spreadsheets()
 # connecting to gcp and having access to google sheets #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 
-# import gspread
+import gspread
 from google.oauth2.service_account import Credentials
 import re
 from datetime import datetime, timedelta
