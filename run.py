@@ -248,7 +248,7 @@ def update_stock(stock_data):
     print("Updating stock data...\n")
     stock_worksheet = SHEET.worksheet('stock')
     stock_worksheet.clear()
-    headers = ['Batch Number', 'Vaccine Name', 'Delivered Quantity', 'Used Quantity', 'Stock Left', 'Last Delivery Date', 'Expiry Date']
+    headers = ['Batch', 'VacName', 'DelQty', 'UsedQty', 'Stock', 'LastDelDate', 'ExpDate']
     stock_worksheet.append_row(headers)
     
     for row in stock_data:
