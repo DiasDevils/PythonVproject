@@ -35,7 +35,7 @@ SHEET = GSPREAD_CLIENT.open('Vproject')
 #  1. Function to Get delivery input from user. #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_delivery():
-    print("Welcome to the Flu Vaccine Stock Tracking System.")
+    # print("Welcome to the Flu Vaccine Stock Tracking System.")
     response = input("Please confirm: Do you need to input DELIVERY data? (Please answer 'yes/no'): ").strip().lower()
     
     if response == "no":
@@ -119,7 +119,7 @@ def update_delivery(data):
 # 2. Get usage input from user #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_usage():
-    print("Now moving to the used vaccines input...\n")
+    # print("Now moving to the used vaccines input...\n")
     response = input("Please confirm: Do you need to input USAGE data? (Please answer 'yes/no'): ").strip().lower()
 
     if response == "no":
