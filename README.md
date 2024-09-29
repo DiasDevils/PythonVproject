@@ -126,7 +126,7 @@ Sucessful deployment on render.com
 - Code placed in the `run.py` file
 - Dependencies placed in the `requirements.txt` file
 - Added to the `requirements.txt` file as required per project
-- Did not edit any other files or code may not have deploy properly
+- Did not edit any other files or code may not have deployed properly
 - Edited code to deploy on render
 - Ignored too long error E501 as deployed on Render not Hiroku
 
