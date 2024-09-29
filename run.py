@@ -174,18 +174,14 @@ def get_usage():
             while True:
                 try:
                     quantity_used = int(input("Enter the quantity of vials used (Whole Number):"))
-                    if quantity_used <1:
+                    if quantity_used < 1:
                         print("Quantity used must be at least 1.")
-                    elif quantity_used >50:
+                    elif quantity_used > 50:
                         print("Quantity used must not exceed 50.")
                     elif quantity_used > delivered_quantity:
                          print(f"Quantity used cannot exceed the delivered quantity of {delivered_quantity}.")
                     else:
-                        break     
-                    # if 1 <= quantity_used <= 50 and quantity_used <= delivered_quantity:
-                        # break
-                    else:
-                        print(f"Invalid input. Please enter a quantity between 1 and {min(50, delivered_quantity)}.")
+                        break
                 except ValueError:
                     print("Invalid input. Please enter a valid number for the quantity used.")
             
