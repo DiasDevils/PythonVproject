@@ -296,29 +296,60 @@ def update_stock(stock_data):
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 # 4. Main function to handle workflow #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-def main():
-    # Get delivery data
-    delivery_data = get_delivery()
-    if delivery_data:
-        update_delivery(delivery_data)
+# def main():
+#     # Get delivery data
+#     delivery_data = get_delivery()
+#     if delivery_data:
+#         update_delivery(delivery_data)
     
-    # Get usage data
-    usage_data = get_usage()
-    if usage_data:
-        update_use(usage_data)
+#     # Get usage data
+#     usage_data = get_usage()
+#     if usage_data:
+#         update_use(usage_data)
 
-    # Calculate and update stock data
-    stock_data = calculate_stock()
-    if stock_data:
-        update_stock(stock_data)
-    else:
-        print("No new stock data to update.\n")
+#     # Calculate and update stock data
+#     stock_data = calculate_stock()
+#     if stock_data:
+#         update_stock(stock_data)
+#     else:
+#         print("No new stock data to update.\n")
 
-# Run the main function
+# # Run the main function
+# main()
+
+def main_menu():
+    print("Welcome to the Flu Vaccine Stock Tracking System")
+
+    while True:
+        print('---------------------')
+        print('1. Input Delivery Data.')
+        print('2. Input Usage Data.')
+        print('3. View Vaccine Stock')
+        print('4. Exit')
+
+        choice= input('Please select an option (1-4):')
+        if choice == '1':
+            delivery_data = get_delivery()
+            if delivery_data:
+                update_delivery(delivery_data)
+        elif choice == '2':
+            usage_data = get_usage()
+            if usage_data:
+                update_use(usage_data)
+        elif choice == '3':
+            stock_data = calculate_stock()
+            if stock_data:
+                update_stock(stock_data)
+            else:
+                print("No new stock data to update. \n")
+        elif choice = '4':
+            print ('Thank you and goodbye!')    
+            break
+        else:
+            print('Please choose a valid option between 1-4.')
+''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+# 4. Call workflow #
+''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+def(main):
+    main_menu()
 main()
-
-#
-# if used qty > del qty throw an error
-# if used vac does not have deliv data print that it wont show in table
-# unless delivery equivalent is entered
-#
