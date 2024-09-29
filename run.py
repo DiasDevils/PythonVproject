@@ -321,9 +321,9 @@ def main_menu():
         print('---------------------')
         print('Option 2.\nInput Usage Data.\n  Usage cannot exceed delivery')
         print('---------------------')
-        print('Option 3.\nView Vaccine Stock.')
+        print('Option 3.\nView Vaccine Stock.\n Shows the stcok details')
         print('---------------------')
-        print('Option 4.\nExit.')
+        print('Option 4.\nExit.\n To log out of FVST')
         print('---------------------')
         choice= input('Please select Option 1, 2,3 or 4 :')
         if choice == '1':
