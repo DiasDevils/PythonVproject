@@ -76,8 +76,24 @@ The user can just exit if they changed their mind about using the system or they
 ![Exit option](exit.png)
 
 ## Future features
+This system needs more development no doubt. First the bugs should be fixed to provide more correct data.
+
 ## Technologies used 
-## Python Packages used
+Draw.io for making charts
+HTML5 for added structure provided by code insititute template
+CSS for added styling provided by code insititute template
+Python to provide the functionality to the system
+Google sheets to store data
+Google API services for connectivity and functionality
+Gitpod used to create the code and conetent and respository
+Github to store the repository 
+
+## Python packages used
+gspread - to manipulate data in google sheets
+dateime - to manipulate dates 
+tabulate to present table
+https://pep8ci.herokuapp.com/ to validate my code
+
 ## Testing 
 ![CodeTest](<python authenticator pep8ci.png>)
 Received a couple of white space errors such as W291(trailing whitespace), W293 (blank line contains white space).
@@ -103,12 +119,21 @@ This is to be fixed at a later time outside the scope of this project.
 
 ## Deployment and Development( cloning repository / APiS)
 #### Deployment
-For deployment i needed to make sure the python version was the same in both entities, gitpod and render.
-I also had to make sure I followed whatever instruction was available on the settings as per screenshot below.
+##### Render
+Created Environment variables in Render in applicable Settings.
+1. 'Port'
+2. 'Nodejs`
+3. 'Credentials'
+4. 'Python version'
+Had credentials `CREDS` and pasted the JSON into the value field.
+Connected my GitHub repository and deployed.
+
+For deployment I needed to make sure the python version was the same in both entities, gitpod and render.
+I also had to make sure I followed the instruction available on the settings as per screenshot below.
 ![Settings One](set1.png)
 ![Settings Two](set2.png)
 
-I had to make sure to enter all the environemt variables that were not present in the documentation of code institute. Some fields are extra.
+I had to make sure to enter all the environemt variables that were not present in the documentation of code institute. Other fields were needed.
 This knowledge could only be acquired through troubleshooting and googling or using open AI to learn what was wrong and how to over come it.
 ![alt text](envvariable.png)
 
@@ -130,28 +155,25 @@ Sucessful deployment on render.com
 - Edited code to deploy on render
 - Ignored too long error E501 as deployed on Render not Hiroku
 
-#### Creating the Render app
-Created Environment variables in Render in Settings
-1. 'Port' 8000
-2. 'nodejs`
-3. 'credentials'
-4. 'something else'
-Had credentials `CREDS` and paste the JSON into the value field.
-Connect your GitHub repository and deploy as normal.
+
 #### Issues on deployment 
 Encountered many issues on the render app but was able to figure it out eventually.
-Used the document given by student services but not all the inforamtion was in the instructions.
-Figured out other environmental varaibles had to be introduced.
-
-
+Used the documentation given by student services but not all the inforamtion was in the instructions.
+Figured out other environmental varaibles had to be introduced through a lot of troubleshooting but I also used the help acquired for the Love Sandwiches run through and was able to apply the knowledge acquired there to this project.
 
 #### Connecting GCP/API
-
+To had the API connectivity instructions and I followed those from previously learned material.
+Went to the google platform and connected while using the google sheets and the goodle drive api services with created credentials.
+![API connection](api.png)
 
 ## Credits
 Code Institute code template.
 Code Institute student support.
+Code Institute lessons.
 Google and Open AI for problem resolution.
+Render
+Python
+
 
 ## Acknowledgements 
 My mentor Richard Wells and the student support staff for render help.
