@@ -8,6 +8,8 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 from tabulate import tabulate
+import gspread
+import re
 
 # Load credentials from environment variable
 credentials_info = json.loads(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
@@ -15,17 +17,6 @@ credentials_info = json.loads(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
 # Initialize your Google Sheets API client using credentials_info
 credentials = Credentials.from_service_account_info(credentials_info)
 SHEET = build('sheets', 'v4', credentials=credentials).spreadsheets()
-
-''' from up above is new''' 
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-# connecting to gcp and having access to google sheets #
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-
-import gspread
-from google.oauth2.service_account import Credentials
-import re
-from datetime import datetime, timedelta
-from tabulate import tabulate
 
 
 SCOPE = [
@@ -62,10 +53,13 @@ def get_delivery():
         # Batch validation
         while True:
             try:
-                batch = int(input("Step 1. Enter the batch number (integer): "))
-                break
+                batch = int(input("Step 1. Enter the batch number (Number between 1 and 100): "))
+                if 1 <= batch <= 100:
+                    break
+                else:
+                    print("Invalid input. Please enter a number between 1 and 100.")
             except ValueError:
-                print("Invalid input. Please enter a valid integer for the batch number.")
+                print("Invalid input. Please enter a valid number for the batch.")
         
         # Date validation (dd/mm/yyyy format and not in the future)
         while True:
@@ -91,10 +85,13 @@ def get_delivery():
         # Quantity validation
         while True:
             try:
-                quantity = int(input("Step 4. Enter the quantity of vials (integer): "))
-                break
+                quantity = int(input("Step 4. Enter the quantity of vials (Whole number): "))
+                if 1 <= quantity <= 50:
+                    break
+                else:
+                    print("Invalid input. Please enter a quantity between 1 and 50.")
             except ValueError:
-                print("Invalid input. Please enter a valid integer for the quantity.")
+                print("Invalid input. Please enter a valid number for the quantity.")
         
         # Create dictionary to store the inputted data
         delivery_data = {
@@ -138,10 +135,13 @@ def get_usage():
         # Batch validation
         while True:
             try:
-                batch= int(input("Enter the batch number (integer):"))
-                break
+                batch= int(input("Enter the batch number (Number between 1 and 100):"))
+                if 1 <= batch <= 100:
+                    break
+                else:
+                    print("Invalid input. Please enter a number between 1 and 100.")
             except ValueError:
-                print("Invalid input: Please enter a valid integer for the batch number.")
+                print("Invalid input: Please enter a valid number for the batch.")
 
         # Vaccine name validation
         valid_vaccines = ["flu-one", "flu-two"]
@@ -155,10 +155,13 @@ def get_usage():
         # Quantity Validation
         while True:
             try:
-                quantity_used = int(input("Enter the quantity of vials used (integer):"))
-                break
+                quantity_used = int(input("Enter the quantity of vials used (Whole Number):"))
+                if 1 <= quantity_used <= 50:
+                    break
+                else:
+                    print("Invalid input. Please enter quantity between 1 and 50.")
             except ValueError:
-                print("Invalid input. Please enter a valid integer for the quantity used.")
+                print("Invalid input. Please enter a valid number for the quantity used.")
         
         # Create usage dictionary to store data
         usage_data = {
