@@ -66,8 +66,14 @@ Instructions are also available as you go along and validation is taking place a
 Data validation transpires along the input of data to make sure the data is correct.
 ![Validation of data](validations.png)
 
+If the stock used is not in the delivery or if the used exceeds delivery the application lets the user know.
+![Cannot be more](cannotbemore.png)
+
 The user can see the stock table. I think it is important for the user to be aware of the contents they have in the practice in order to plan for next order or riddance of expired stock should they have it on the shelves.
 ![Stock Table](tablestock.png)
+
+The user can just exit if they changed their mind about using the system or they were interrupted. 
+![Exit option](exit.png)
 
 ## Future features
 ## Technologies used 
@@ -112,6 +118,12 @@ Connect your GitHub repository and deploy as normal.
 Encountered many issues on the render app but was able to figure it out eventually.
 Used the document given by student services but not all the inforamtion was in the instructions.
 Figured out other environmental varaibles had to be introduced.
+#### Existing bug
+There is a bug in the system where if the usage is entered again at a later stage for a particular batch and there are already used data present in the system, it does not recognize the present vaccine used and it can calculate as minus in the stock.
+This is to be fixed at a later time.
+![Bug ](discoveredbug.png)
+
+
 #### Connecting GCP/API
 
 
