@@ -102,13 +102,34 @@ This is to be fixed at a later time outside the scope of this project.
 ![Bug ](discoveredbug.png)
 
 ## Deployment and Development( cloning repository / APiS)
+#### Deployment
+For deployment i needed to make sure the python version was the same in both entities, gitpod and render.
+I also had to make sure I followed whatever instruction was available on the settings as per screenshot below.
+![Settings One](set1.png)
+![Settings Two](set2.png)
+
+I had to make sure to enter all the environemt variables that were not present in the documentation of code institute. Some fields are extra.
+This knowledge could only be acquired through troubleshooting and googling or using open AI to learn what was wrong and how to over come it.
+![alt text](envvariable.png)
+
+The creds file instructions was followed and entered on render.
+![alt text](credsfile.png)
+
+After many fails the deployment finally succeeded as per screenshots. Logs were available where I could see the progress of the deployment.
+Clearing cache and deployment in the menu was a button i pressed many times.
+![alt text](deployment.png)
+
+Sucessful deployment on render.com
+![alt text](deployedgreen.png)
+
 #### Guidelines followed:
 - Code placed in the `run.py` file
 - Dependencies placed in the `requirements.txt` file
 - Added to the `requirements.txt` file as required per project
 - Did not edit any other files or code may not have deploy properly
-- Edited coe to deploy on render
+- Edited code to deploy on render
 - Ignored too long error E501 as deployed on Render not Hiroku
+
 #### Creating the Render app
 Created Environment variables in Render in Settings
 1. 'Port' 8000
