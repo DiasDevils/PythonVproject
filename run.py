@@ -63,11 +63,13 @@ def get_delivery():
         
         # Date validation (dd/mm/yyyy format and not in the future)
         while True:
-            date_str = input("Step 2. Enter the delivery date (dd/mm/yyyy): ")
+            date_str = input("Step 2. Enter the delivery date (dd/mm/yyyy) from 2020 onwards: ")
             try:
                 delivery_date = datetime.strptime(date_str, "%d/%m/%Y")
                 if delivery_date > datetime.now():
                     print("The delivery date cannot be in the future. Please enter a valid date.")
+                elif delivery_date < datetime (2020,1,1):
+                    print:("The delivery date cannot be earlier than 2020. Please enter a valid date.")
                 else:
                     break
             except ValueError:
