@@ -89,14 +89,14 @@ It feels bulky therfore more refinement is merited.
 
 
 ## Technologies used 
-Draw.io for making charts
-HTML5 for added structure provided by code insititute template
-CSS for added styling provided by code insititute template
-Python to provide the functionality to the system
-Google sheets to store data
-Google API services for connectivity and functionality
-Gitpod used to create the code and conetent and respository
-Github to store the repository 
+* Draw.io for making charts
+* HTML5 for added structure provided by code insititute template
+* CSS for added styling provided by code insititute template
+* Python to provide the functionality to the system
+* Google sheets to store data
+* Google API services for connectivity and functionality
+* Gitpod used to create the code and conetent and respository
+* Github to store the repository 
 
 ## Python packages used
 gspread - to manipulate data in google sheets
