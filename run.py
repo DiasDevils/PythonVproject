@@ -316,15 +316,15 @@ def main_menu():
 
     while True:
         print('---------------------')
-        print('Option 1.\nInput Delivery Data.\n Accepts dates from 01/01/2023. \n Quantities must be min 1 max 50.')
+        print('Option 1.\nInput Delivery Data.\n  Accepts dates from 01/01/2023\n  Quantities must be min 1 max 50')
         print('---------------------')
-        print('Option 2.\nInput Usage Data.\n Usage cannot exceed delivery.')
+        print('Option 2.\nInput Usage Data.\n  Usage cannot exceed delivery')
         print('---------------------')
-        print('Option 3.\nView Vaccine Stock')
+        print('Option 3.\nView Vaccine Stock.')
         print('---------------------')
-        print('Option 4.\nExit')
-
-        choice= input('Please select an option (1-4):')
+        print('Option 4.\nExit.')
+        print('---------------------')
+        choice= input('Please select Option 1, 2,3 or 4 :')
         if choice == '1':
             delivery_data = get_delivery()
             if delivery_data:
