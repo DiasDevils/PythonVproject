@@ -19,7 +19,9 @@ PythonVproject is a Flu Vaccine Stock Tracking System designed to run on the ren
 * Technologies used 
 * Python Packages used
 * Testing
-* Deployment and Development( cloning repository / APiS)
+* User Testing
+* Development and Existing bugs
+* Deployment and Development
 * Credits
 * Acknowledgements 
 
@@ -48,6 +50,7 @@ For this I used a google sheet that was to collect the deliveries and usages and
 ![Vacstock Logic and User charts.](vacstock.drawio.png)
 I drew this chart to understand and clarify how the program was going to work. This design on flow chart helped ne comprehend and guide me to bring the application to fruition. A clearly defined flow helped code and have the correct flow.
 Both the google sheet flow calculation and the flow chart design paved the way for the application to function correctly.
+
 ## Data storage
 The data is stored in a google sheet. All data entered gets saved down and then calculations are made from this stored data. It is imperative for data to be stored in order to calculate the stock. It is also vital that data is correctly entered. Without good data no application could perform adequate steps.
 ![DataStorage](googlesheet.png)
@@ -76,7 +79,14 @@ The user can just exit if they changed their mind about using the system or they
 ![Exit option](exit.png)
 
 ## Future features
-This system needs more development no doubt. First the bugs should be fixed to provide more correct data.
+This system needs more development.
+I had in mind something simple but it became more complex as it went along.
+First the bugs should be fixed to provide correct data.
+The stock should never be a minus number- this at least is a clear indication that data was incorrectly entered.
+The expiry calculations should be refined as well.
+I feel the system could really improve as it does not feel smooth.
+It feels bulky therfore more refinement is merited.
+
 
 ## Technologies used 
 Draw.io for making charts
@@ -95,10 +105,20 @@ tabulate to present table
 https://pep8ci.herokuapp.com/ to validate my code
 
 ## Testing 
+The CSS, HTML, Javascript were provided by the Code Institute for this project, thus did not test for these.
+
+The code I tested was the python code for this project.
 ![CodeTest](<python authenticator pep8ci.png>)
-Received a couple of white space errors such as W291(trailing whitespace), W293 (blank line contains white space).
-Received E501 error (line too long).
-Received E302 error (expecting white line but 0 found).
+
+Received a couple of white space errors such as:
+* W291(trailing whitespace).
+* W293 (blank line contains white space).
+* Received E501 error (line too long).
+* Received E302 error (expecting white line but 0 found).
+I fixed the white spaces but the long lines I left in the code as I did not deploy on Hiroku. 
+The code works in this project as is.
+There is a known rule among coders that "if it works, don't touch it" allegedly.
+
 
 ### User Testing 
 Requested several people to try the application. Several bugs in the logic were discovered.
@@ -110,16 +130,15 @@ Requested several people to try the application. Several bugs in the logic were 
 - batch number could be a negative number - bug fixed 
 - quantity allowed to order was missing - bug fixed
 
-#### Development 
+#### Development and Existing bugs
 The code was going from simple step to step to more complex logic. It started simple and then I came across many bugs as stated above. These bugs were only visible after user testing and requesting individuals to play with the application and think of possibilities that I did not think about. Even with these bugs there is at least one bug that I have thought about but do not have the time frame to cover in this project. The delivery date and expiration date is far more complex than just added 30 days to the delivery. In fact, my logic adds 30 days to the last delivery but it does not account for the old delivery to be sure out of date and therefore expired. More testing and more development is required to perfect this application and more complex logic is required to cover these refined detail on expiration.
-#### Existing bug
+
 There is another bug in the system where if the usage is entered again at a later stage for a particular batch and there are already used quantities present in the system, it does not recognize the present usage to take into account for that vaccine used and it can calculate as minus in the stock.
 This is to be fixed at a later time outside the scope of this project.
 ![Bug ](discoveredbug.png)
 
-## Deployment and Development( cloning repository / APiS)
-#### Deployment
-##### Render
+## Deployment and Development
+#### Deployment on Render
 Created Environment variables in Render in applicable Settings.
 1. 'Port'
 2. 'Nodejs`
@@ -148,6 +167,7 @@ Sucessful deployment on render.com
 ![alt text](deployedgreen.png)
 
 #### Guidelines followed:
+- Cloned template as per Code Institure request and used for project as instructed
 - Code placed in the `run.py` file
 - Dependencies placed in the `requirements.txt` file
 - Added to the `requirements.txt` file as required per project
@@ -163,24 +183,19 @@ Figured out other environmental varaibles had to be introduced through a lot of 
 
 #### Connecting GCP/API
 To had the API connectivity instructions and I followed those from previously learned material.
+Used the Goodle Drive API and Google Shees API.
 Went to the google platform and connected while using the google sheets and the goodle drive api services with created credentials.
 ![API connection](api.png)
 
 ## Credits
-Code Institute code template.
-Code Institute student support.
-Code Institute lessons.
-Google and Open AI for problem resolution.
-Render
-Python
-
+Code Institute code template to create this project.
+Code Institute student support to troubleshoot a lesson project and used this knowledge to apply to this project.
+Code Institute lessons for connecting API.
+Google and Open AI for problem resolution and code troubleshooting.
+Advice from my mentor Richard Wells on menu creation.
+My job and the code institute "love sandwiches project" for the idea of a Flu Vacstock system.
 
 ## Acknowledgements 
-My mentor Richard Wells and the student support staff for render help.
+My mentor Richard Wells and the student support staff for render knowledge from lessons that I used to deploy.
 
-
-
-
-
-## Constraints
-
+Dia LeDesma 2024
