@@ -4,32 +4,26 @@ PythonVproject is a Flu Vaccine Stock Tracking System designed to run on the ren
 
 [Visit My Website](https://pythonvproject.onrender.com/)
 
+## Disclaimer:
+This project used the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to the template file was: **May 14, 2024**.
+### Guidelines followed:
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+- Code placed in the `run.py` file
+- Dependencies placed in the `requirements.txt` file
+- Added to the `requirements.txt` file as required per project
+- Did not edit any other files or code may not have deploy properly
+- Edited coe to deploy on render
+- Ignored too long error E501 as deployed on Render not Hiroku
 
-## Reminders
+## Creating the Render app
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+Created Environment variables in Render in Settings
 
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
+1. 'Port' 8000
+2. 'nodejs`
+3. 'credentials'
+4. 'something else'
+Had credentials `CREDS` and paste the JSON into the value field.
 Connect your GitHub repository and deploy as normal.
 
 ## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
