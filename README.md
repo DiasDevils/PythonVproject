@@ -10,6 +10,7 @@ PythonVproject is a Flu Vaccine Stock Tracking System designed to run on the ren
 
 ## Content 
 * Purpose
+- [Purpose](#purpose)
 * User Experience
 * Code logic
 * Flow chart
@@ -118,8 +119,7 @@ I fixed the white spaces but the long lines I left in the code as I did not depl
 The code works in this project as is.
 There is a known rule among coders that "if it works, don't touch it" allegedly.
 
-
-### User Testing 
+## User Testing 
 Requested several people to try the application. Several bugs in the logic were discovered.
 - usage could exceed delivery - bug fixed
 - dates could be in the past - bug fixed
