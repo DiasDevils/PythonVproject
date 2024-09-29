@@ -56,12 +56,16 @@ The data is stored in a google sheet. All data entered gets saved down and then 
 The start of the program it explains cleary what the system is and what it is for.
 It also gives clear instructions by options needed for the system to work.
 ![PythonVproject start](start.png)
-Instructions are also available as you go along and validation is taking place along the way to make sure good data is entered.
-![PythonVproject validation](instructvalidat.png)
+
 The main menu asks for an option to be chosen and it is clear that an option must be chosen to proceed.
 ![Option Ask](selectoption.png)
+
+Instructions are also available as you go along and validation is taking place along the way to make sure good data is entered.
+![PythonVproject validation](instructvalidat.png)
+
 Data validation transpires along the input of data to make sure the data is correct.
 ![Validation of data](validations.png)
+
 The user can see the stock table. I think it is important for the user to be aware of the contents they have in the practice in order to plan for next order or riddance of expired stock should they have it on the shelves.
 ![Stock Table](tablestock.png)
 
