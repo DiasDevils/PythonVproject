@@ -5,9 +5,25 @@ PythonVproject is a Flu Vaccine Stock Tracking System designed to run on the ren
 [Visit My Website](https://pythonvproject.onrender.com/)
 
 ## Disclaimer:
-This project used the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to the template file was: **May 14, 2024**.
-### Guidelines followed:
+This project used the Code Institute student template for deploying my third portfolio Python command-line project. The last update to the template file was: **May 14, 2024**.
 
+## Content 
+* Purpose
+* User Experience
+* Code logic
+* Flow chart
+* Data storage
+* Features 
+* Future features
+* Technologies used 
+* Python Packages used
+* Testing
+* Deployment and Development( cloning repository / APiS)
+* Credits
+* Acknowledgements 
+
+
+### Guidelines followed:
 - Code placed in the `run.py` file
 - Dependencies placed in the `requirements.txt` file
 - Added to the `requirements.txt` file as required per project
@@ -16,9 +32,7 @@ This project used the Code Institute student template for deploying your third p
 - Ignored too long error E501 as deployed on Render not Hiroku
 
 ## Creating the Render app
-
 Created Environment variables in Render in Settings
-
 1. 'Port' 8000
 2. 'nodejs`
 3. 'credentials'
@@ -26,4 +40,9 @@ Created Environment variables in Render in Settings
 Had credentials `CREDS` and paste the JSON into the value field.
 Connect your GitHub repository and deploy as normal.
 
+## Testing 
+add picture 
+explain the 501 error
+
 ## Constraints
+
