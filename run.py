@@ -312,9 +312,10 @@ def update_stock(stock_data):
 # main()
 
 def main_menu():
-    print("Welcome to the Flu Vaccine Stock Tracking System")
+    print("Welcome to the Flu Vaccine Stock Tracking System (FVST)")
 
     while True:
+        print("Please follow instructions for the FVST System below.")
         print('---------------------')
         print('Option 1.\nInput Delivery Data.\n  Accepts dates from 01/01/2023\n  Quantities must be min 1 max 50')
         print('---------------------')
