@@ -1,10 +1,6 @@
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 # connecting to gcp and having access to google sheets #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-# connecting to gcp and having access to google sheets #
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-
 import os
 import json
 from google.oauth2.service_account import Credentials
@@ -21,7 +17,6 @@ SHEET = build('sheets', 'v4', credentials=credentials).spreadsheets()
 
 import gspread
 import re
-
 
 
 SCOPE = [
@@ -74,7 +69,7 @@ def get_delivery():
                 if delivery_date > datetime.now():
                     print("The delivery date cannot be in the future. Please enter a valid date.")
                 elif delivery_date < datetime (2020,1,1):
-                    print:("The delivery date cannot be earlier than 2020. Please enter a valid date.")
+                    print("The delivery date cannot be earlier than 2020. Please enter a valid date.")
                 else:
                     break
             except ValueError:
