@@ -9,22 +9,21 @@ PythonVproject is a Flu Vaccine Stock Tracking System designed to run on the ren
 2. This application is not all comprehensive. There is more development to be done. Due to the scope of this project and time constraints I am satisfied with the current development and features which satisfy the project goals.
 
 ## Content 
-* Purpose
 - [Purpose](#purpose)
-* User Experience
-* Code logic
-* Flow chart
-* Data storage
-* Features 
-* Future features
-* Technologies used 
-* Python Packages used
-* Testing
-* User Testing
-* Development and Existing bugs
-* Deployment and Development
-* Credits
-* Acknowledgements 
+- [User Experience](#user-experience)
+- [Code logic](#code-logic)
+- [Flow chart](#flow-chart)
+- [Data storage](#data-storage)
+- [Features](#features)
+- [Future features](#future-features)
+- [Technologies used](#technologies-used)
+- [Python Packages used ](#python-packages-used)
+- [Testing](#testing)
+- [User Testing](#user-testing)
+- [Development and Existing bugs](#development-and-existing-bugs)
+- [Deployment and Development](#deployment-and-development)
+- [Credits ](#credits)
+- [Acknowledgements](#acknowledgements)
 
 -------------------------------------------------------------------------
 ## Purpose
