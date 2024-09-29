@@ -120,7 +120,7 @@ def update_delivery(data):
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_usage():
     # print("Now moving to the used vaccines input...\n")
-    response = input("Please confirm: Do you need to input USAGE data? (Please answer 'yes/no'): ").strip().lower()
+    response = input("Please confirm: Do you need to input USAGE data? ('yes/no'): ").strip().lower()
 
     if response == "no":
         print("Skipping usage input.")
