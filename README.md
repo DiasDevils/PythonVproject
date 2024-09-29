@@ -5,7 +5,8 @@ PythonVproject is a Flu Vaccine Stock Tracking System designed to run on the ren
 [Visit My Website](https://pythonvproject.onrender.com/)
 
 ## Disclaimer:
-This project used the Code Institute student template for deploying my third portfolio project using Python command-line. The last update to the template file was: **May 14, 2024**.
+1. This project used the Code Institute student template for deploying my third portfolio project using Python command-line. The last update to the template file was: **May 14, 2024**.
+2. This application is not all comprehensive. There is more development to be done. Due to the scope of this project and time constraints I am satisfied with the current development and features which satisfy the project goals.
 
 ## Content 
 * Purpose
