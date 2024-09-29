@@ -96,7 +96,10 @@ Requested several people to try the application. Several bugs in the logic were 
 
 #### Development 
 The code was going from simple step to step to more complex logic. It started simple and then I came across many bugs as stated above. These bugs were only visible after user testing and requesting individuals to play with the application and think of possibilities that I did not think about. Even with these bugs there is at least one bug that I have thought about but do not have the time frame to cover in this project. The delivery date and expiration date is far more complex than just added 30 days to the delivery. In fact, my logic adds 30 days to the last delivery but it does not account for the old delivery to be sure out of date and therefore expired. More testing and more development is required to perfect this application and more complex logic is required to cover these refined detail on expiration.
-
+#### Existing bug
+There is another bug in the system where if the usage is entered again at a later stage for a particular batch and there are already used quantities present in the system, it does not recognize the present usage to take into account for that vaccine used and it can calculate as minus in the stock.
+This is to be fixed at a later time outside the scope of this project.
+![Bug ](discoveredbug.png)
 
 ## Deployment and Development( cloning repository / APiS)
 #### Guidelines followed:
@@ -118,10 +121,7 @@ Connect your GitHub repository and deploy as normal.
 Encountered many issues on the render app but was able to figure it out eventually.
 Used the document given by student services but not all the inforamtion was in the instructions.
 Figured out other environmental varaibles had to be introduced.
-#### Existing bug
-There is a bug in the system where if the usage is entered again at a later stage for a particular batch and there are already used data present in the system, it does not recognize the present vaccine used and it can calculate as minus in the stock.
-This is to be fixed at a later time.
-![Bug ](discoveredbug.png)
+
 
 
 #### Connecting GCP/API
