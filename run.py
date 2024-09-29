@@ -1,6 +1,9 @@
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 # connecting to gcp and having access to google sheets #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+# connecting to gcp and having access to google sheets #
+''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 
 import os
 import json
@@ -8,8 +11,6 @@ from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 from tabulate import tabulate
-import gspread
-import re
 
 # Load credentials from environment variable
 credentials_info = json.loads(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
@@ -17,6 +18,10 @@ credentials_info = json.loads(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
 # Initialize your Google Sheets API client using credentials_info
 credentials = Credentials.from_service_account_info(credentials_info)
 SHEET = build('sheets', 'v4', credentials=credentials).spreadsheets()
+
+import gspread
+import re
+
 
 
 SCOPE = [
