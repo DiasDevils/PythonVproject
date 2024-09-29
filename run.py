@@ -317,13 +317,13 @@ def main_menu():
     while True:
         print("Please follow instructions for the FVST System below.")
         print('---------------------')
-        print('Option 1.INPUT DELIVERIES (accepts dates from 01/01/2023 & quantities must be from 1 to 50)')
+        print('Option 1.INPUT DELIVERIES (accepts dates from 01/01/2023 & quantities 1 to 50)')
         print('---------------------')
         print('Option 2.INPUT USAGE (usage cannot exceed delivery per batch)')
         print('---------------------')
         print('Option 3. VIEW STOCK TABLE (shows stock details)')
         print('---------------------')
-        print('Option 4. EXIT (logs out of FVST')
+        print('Option 4. EXIT (logs out of FVST)')
         print('---------------------')
         choice= input('Please Select Option 1,2,3 or 4 to continue:')
         if choice == '1':
