@@ -99,15 +99,14 @@ It feels bulky therfore more refinement is merited.
 * Github to store the repository 
 
 ## Python packages used
-gspread - to manipulate data in google sheets
-dateime - to manipulate dates 
-tabulate to present table
-https://pep8ci.herokuapp.com/ to validate my code
+* gspread - to manipulate data in google sheets
+* dateime - to manipulate dates 
+* tabulate to present table
+
 
 ## Testing 
 The CSS, HTML, Javascript were provided by the Code Institute for this project, thus did not test for these.
-
-The code I tested was the python code for this project.
+The code I tested was the python code for this project on https://pep8ci.herokuapp.com/ to validate my code
 ![CodeTest](<python authenticator pep8ci.png>)
 
 Received a couple of white space errors such as:
