@@ -42,14 +42,29 @@ The user of this application will be a person in the medical sphere that must re
 ## Code logic
 ![Coding Logic](logicexcel.png)
 First I had to understand what a user would need and how it would actually work to calculate a stock.
-For this I used a google sheet that was to collect the deliveries and usages and then these data points would be used to calculate the stock. This google sheet was paramount to the design of how the application would work and the logic from how it should operate in a manual setting was applied/transferred to the application. This step was crucial in the design.
+For this I used a google sheet that was to collect the deliveries and usages and then these data points would be used to calculate the stock. This google sheet was paramount to the design of how the application would work and the logic from how it should operate in a manual setting and then was applied/transferred to the application. This step was crucial in the design.
 
 ## Flow chart
 ![Vacstock Logic and User charts.](vacstock.drawio.png)
 I drew this chart to understand and clarify how the program was going to work. This design on flow chart helped ne comprehend and guide me to bring the application to fruition. A clearly defined flow helped code and have the correct flow.
 Both the google sheet flow calculation and the flow chart design paved the way for the application to function correctly.
 ## Data storage
+The data is stored in a google sheet. All data entered gets saved down and then calculations are made from this stored data. It is imperative for data to be stored in order to calculate the stock. It is also vital that data is correctly entered. Without good data no application could perform adequate steps.
+![DataStorage](googlesheet.png)
+
 ## Features 
+The start of the program it explains cleary what the system is and what it is for.
+It also gives clear instructions by options needed for the system to work.
+![PythonVproject start](start.png)
+Instructions are also available as you go along and validation is taking place along the way to make sure good data is entered.
+![PythonVproject validation](instructvalidat.png)
+The main menu asks for an option to be chosen and it is clear that an option must be chosen to proceed.
+![Option Ask](selectoption.png)
+Data validation transpires along the input of data to make sure the data is correct.
+![Validation of data](validations.png)
+The user can see the stock table. I think it is important for the user to be aware of the contents they have in the practice in order to plan for next order or riddance of expired stock should they have it on the shelves.
+![Stock Table](tablestock.png)
+
 ## Future features
 ## Technologies used 
 ## Python Packages used
