@@ -342,7 +342,7 @@ def main_menu():
                 update_stock(stock_data)
             else:
                 print("No new stock data to update. \n")
-        elif choice = '4':
+        elif choice == '4':
             print ('Thank you and goodbye!')    
             break
         else:
