@@ -42,7 +42,7 @@ SHEET = GSPREAD_CLIENT.open('Vproject')
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_delivery():
     print("Welcome to the Flu Vaccine Stock Tracking System.")
-    response = input("Do you need to input DELIVERY data? (yes/no): ").strip().lower()
+    response = input("Do you need to input DELIVERY data? (Please answer 'yes/no'): ").strip().lower()
     
     if response == "no":
         print("Skipping delivery input...")
@@ -126,7 +126,7 @@ def update_delivery(data):
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_usage():
     print("Now moving to the used vaccines input...\n")
-    response = input("Do you need to input USAGE data? (yes/no): ").strip().lower()
+    response = input("Do you need to input USAGE data? (Please answer 'yes/no'): ").strip().lower()
 
     if response == "no":
         print("Skipping usage input.")
@@ -155,13 +155,28 @@ def get_usage():
                 print("Invalid vaccine name. Please enter 'flu-one' or 'flu-two'.")
 
         # Quantity Validation
+        ## new ##
+        # Retrieve delivered quantity for the specified batch and vaccine
+        delivery_worksheet = SHEET.worksheet('delivery')
+        delivery_data = delivery_worksheet.get_all_values()[1:] 
+        delivered_quantity = 0
+        for row in delivery_data:
+            if int(row[0]) == batch and row[2] == vaccine:
+                delivered_quantity += int(row[3]) 
+
+        
+        if delivered_quantity == 0:
+            print(f"No delivery data found for Batch {batch} and Vaccine {vaccine}. Please enter a valid usage.")
+            return None  # Exit if there's no delivery data
+
+        ## new ##
         while True:
             try:
                 quantity_used = int(input("Enter the quantity of vials used (Whole Number):"))
-                if 1 <= quantity_used <= 50:
+                if 1 <= quantity_used <= 50 and quantity_used <= delivered_quantity:
                     break
                 else:
-                    print("Invalid input. Please enter quantity between 1 and 50.")
+                    print(f"Invalid input. Please enter a quantity between 1 and {min(50, delivered_quantity)}.")
             except ValueError:
                 print("Invalid input. Please enter a valid number for the quantity used.")
         
