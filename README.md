@@ -27,9 +27,13 @@ This project used the Code Institute student template for deploying my third por
 ## Purpose
 ## User Experience
 ## Code logic
-![Flow Chart ](VacStock.drawio.png)
-Used google sheet to calculate how it would work and applied that to the logic.
+![Coding Logic](logicexcel.png)
+First I had to understand what a user would need and how it would actually work to calculate a stock.
+For this I used google sheet that was to collect the deliveries and usages and then these data points would be used to calculate the stock. This google sheet was paramount to the design of how the application would work and the logic from how it should operate in a manual setting was applied or transferred to the application.
 ## Flow chart
+![Vacstock Logic and User charts.](vacstock.drawio.png)
+I drew this chart to understand and clarify how the program was going to work. This design on flow chart helped ne comprehend and guide me to bring the application to fruition. A clearly defined flow helped code and have the correct flow.
+Both the google sheet flow calculation and the flow design paved the way for the application to work.
 ## Data storage
 ## Features 
 ## Future features
