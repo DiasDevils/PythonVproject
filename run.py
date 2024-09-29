@@ -1,6 +1,6 @@
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-# connecting to gcp and having access to google sheets #
-''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
+''' """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" '''
+# Connecting to gcp and having access to google sheets and importing required libraries
+''' """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" '''
 import os
 import json
 from google.oauth2.service_account import Credentials
@@ -18,12 +18,12 @@ SHEET = build('sheets', 'v4', credentials=credentials).spreadsheets()
 import gspread
 import re
 
-
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
+
 CREDS = Credentials.from_service_account_info(json.loads(os.environ['GOOGLE_APPLICATION_CREDENTIALS']))
 # CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -31,18 +31,12 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Vproject')
 
 
-# code to check if getting data is working #
-# delivery = SHEET.worksheet('delivery')
-# data = delivery.get_all_values()
-# print(data)
-
-
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 #  1. Function to Get delivery input from user. #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_delivery():
     print("Welcome to the Flu Vaccine Stock Tracking System.")
-    response = input("Do you need to input DELIVERY data? (Please answer 'yes/no'): ").strip().lower()
+    response = input("Please confirm: Do you need to input DELIVERY data? (Please answer 'yes/no'): ").strip().lower()
     
     if response == "no":
         print("Skipping delivery input...")
@@ -63,13 +57,13 @@ def get_delivery():
         
         # Date validation (dd/mm/yyyy format and not in the future)
         while True:
-            date_str = input("Step 2. Enter the delivery date (dd/mm/yyyy) from the year 2020 onwards: ")
+            date_str = input("Step 2. Enter the delivery date in format (dd/mm/yyyy): ")
             try:
                 delivery_date = datetime.strptime(date_str, "%d/%m/%Y")
                 if delivery_date > datetime.now():
                     print("The delivery date cannot be in the future. Please enter a valid date.")
-                elif delivery_date < datetime (2020,1,1):
-                    print("The delivery date cannot be earlier than 2020. Please enter a valid date.")
+                elif delivery_date < datetime (2023,1,1):
+                    print("The delivery date cannot be earlier than 01/01/2023. Please enter a valid date.")
                 else:
                     break
             except ValueError:
@@ -87,7 +81,7 @@ def get_delivery():
         # Quantity validation
         while True:
             try:
-                quantity = int(input("Step 4. Enter the quantity of vials (Whole number): "))
+                quantity = int(input("Step 4. Enter the quantity of vials delivered (Whole number): "))
                 if 1 <= quantity <= 50:
                     break
                 else:
@@ -126,7 +120,7 @@ def update_delivery(data):
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 def get_usage():
     print("Now moving to the used vaccines input...\n")
-    response = input("Do you need to input USAGE data? (Please answer 'yes/no'): ").strip().lower()
+    response = input("Please confirm: Do you need to input USAGE data? (Please answer 'yes/no'): ").strip().lower()
 
     if response == "no":
         print("Skipping usage input.")
@@ -322,10 +316,10 @@ def main_menu():
 
     while True:
         print('---------------------')
-        print('1. Input Delivery Data.')
-        print('2. Input Usage Data.')
-        print('3. View Vaccine Stock')
-        print('4. Exit')
+        print('Option 1. Input Delivery Data.\n Accepts dates from 01/01/2023. \n Quantities must be min 1 max 50.\n')
+        print('Option 2. Input Usage Data.\n Usage cannot exceed delivery.\n')
+        print('Option 3. View Vaccine Stock')
+        print('Option 4. Exit')
 
         choice= input('Please select an option (1-4):')
         if choice == '1':
