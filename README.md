@@ -58,7 +58,10 @@ The data is stored in a google sheet. All data entered gets saved down and then 
 ## Features 
 The start of the program it explains clearly what the system is and what it is for.
 It also gives clear instructions by options needed for the system to work.
-![PythonVproject start](docs/start.png)
+![Menu](docs/newmenu.png)
+
+This was the initial menu but it was too long so it was improved.
+![PythonVproject old menu](docs/start.png)
 
 The main menu asks for an option to be chosen and it is clear that an option must be chosen to proceed.
 ![Option Ask](docs/selectoption.png)
