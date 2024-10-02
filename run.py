@@ -100,7 +100,10 @@ def get_delivery():
         print("Invalid input. Please answer 'yes' or 'no'.")
         return get_delivery()
 
-# Function to update the delivery worksheet
+
+''' """"""""""""""""""""""""""""""""""""""""" '''
+#  2. Function to update the delivery worksheet #
+''' """"""""""""""""""""""""""""""""""""""""" '''
 
 
 def update_delivery(data):
@@ -112,8 +115,10 @@ def update_delivery(data):
 
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
-# 2. Get usage input from user #
+# 3. Get usage input from user #
 ''' """"""""""""""""""""""""""""""""""""""""" '''
+
+
 def get_usage():
     # Retrieve the current delivery and usage data from the worksheets
     delivery_worksheet = SHEET.worksheet('delivery')
@@ -186,7 +191,7 @@ def get_usage():
 
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
-# Function to update the usage worksheet
+# 4. Function to update the usage worksheet
 ''' """"""""""""""""""""""""""""""""""""""""" '''
 
 
@@ -199,7 +204,7 @@ def update_use(data):
 
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
-# 3. Calculating stock from delivery and usage #
+# 5. Calculating stock from delivery and usage #
 ''' """"""""""""""""""""""""""""""""""""""""" '''
 
 
@@ -266,7 +271,7 @@ def calculate_stock():
 
 
 ''' """""""""""""""""""""""""""" '''
-# Updating stock function #
+# 6. Updating stock function #
 ''' """""""""""""""""""""""""""" '''
 
 

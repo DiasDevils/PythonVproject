@@ -31,7 +31,7 @@ PythonVproject is a Flu Vaccine Stock Tracking System designed to run on the ren
 
 ## User Experience
 As the creator of the application and user I needed and wanted to make sure of the following:
-* the user to find the system easy to navidate and easy to understand
+* the user to find the system easy to navigate and easy to understand
 * the user to have instructions and limitation information where necessary
 * the user to be aware of steps and validation steps for when incorrect data was entered
 * maintain the user informed along every step
@@ -79,14 +79,13 @@ The user can just exit if they changed their mind about using the system or they
 ![Exit option](exit.png)
 
 ## Future features
-This system needs more development.
-I had in mind something simple but it became more complex as it went along.
-First the bugs should be fixed to provide correct data.
-The stock should never be a minus number- this at least is a clear indication that data was incorrectly entered.
-The expiry calculations should be refined as well.
+I had in mind something more simple to be honest but it became more complex as it went along.
+I feel this system needs more development.
+The expirty date calculation should be properly thought out and a more complex logic developped.
 I feel the system could really improve as it does not feel smooth.
-It feels bulky therfore more refinement is merited.
-
+It feels a annoying once I use it again and again, therfore more refinement is merited.
+A future feature could be developped that if a delivery has been fulfilled and all stock is used then not let the user try to add more usage.
+Another feature could be not to allow same batch number for more deliveries for that batch number.
 
 ## Technologies used 
 * Draw.io for making charts
