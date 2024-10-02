@@ -204,7 +204,7 @@ def update_use(data):
 
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
-# 5. Calculating stock from delivery and usage #
+# 5. Function to Calculating stock from delivery and usage #
 ''' """"""""""""""""""""""""""""""""""""""""" '''
 
 
@@ -271,7 +271,7 @@ def calculate_stock():
 
 
 ''' """""""""""""""""""""""""""" '''
-# 6. Updating stock function #
+# 6.Function to Updating stock function #
 ''' """""""""""""""""""""""""""" '''
 
 
@@ -300,7 +300,7 @@ def update_stock(stock_data):
 
 
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
-# 4. Main function to handle workflow #
+# 7. Main function to handle workflow #
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
 
 
@@ -340,7 +340,7 @@ def main_menu():
 
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
-# 4. Call workflow #
+# 8. Call workflow #
 ''' """"""""""""""""""""""""""""""""""""""""" '''
 
 
