@@ -56,7 +56,7 @@ The data is stored in a google sheet. All data entered gets saved down and then 
 ![DataStorage](googlesheet.png)
 
 ## Features 
-The start of the program it explains cleary what the system is and what it is for.
+The start of the program it explains clearly what the system is and what it is for.
 It also gives clear instructions by options needed for the system to work.
 ![PythonVproject start](start.png)
 
@@ -81,20 +81,20 @@ The user can just exit if they changed their mind about using the system or they
 ## Future features
 I had in mind something more simple to be honest but it became more complex as it went along.
 I feel this system needs more development.
-The expirty date calculation should be properly thought out and a more complex logic developped.
+The expiry date calculation should be properly thought out and a more complex logic developed.
 I feel the system could really improve as it does not feel smooth.
-It feels a annoying once I use it again and again, therfore more refinement is merited.
-A future feature could be developped that if a delivery has been fulfilled and all stock is used then not let the user try to add more usage.
+It feels a annoying once I use it again and again, therefore more refinement is merited.
+A future feature could be developed that if a delivery has been fulfilled and all stock is used then not let the user try to add more usage.
 Another feature could be not to allow same batch number for more deliveries for that batch number.
 
 ## Technologies used 
 * Draw.io for making charts
-* HTML5 for added structure provided by code insititute template
-* CSS for added styling provided by code insititute template
+* HTML5 for added structure provided by code institute template
+* CSS for added styling provided by code institute template
 * Python to provide the functionality to the system
 * Google sheets to store data
 * Google API services for connectivity and functionality
-* Gitpod used to create the code and conetent and respository
+* Gitpod used to create the code and content and repository
 * Github to store the repository 
 
 ## Python packages used
@@ -113,8 +113,8 @@ Received a couple of white space errors such as:
 * W293 (blank line contains white space).
 * Received E501 error (line too long).
 * Received E302 error (expecting white line but 0 found).
-I fixed the white spaces but the long lines I left in the code as I did not deploy on Hiroku. 
-The code works in this project as is.
+I fixed the white spaces but the 'long lines' I left in the code as it is not necessary to reduce
+The code works in this project as is and long lines are needed.
 There is a known rule among coders that "if it works, don't touch it" allegedly.
 
 ## User Testing 
@@ -129,23 +129,24 @@ Requested several people to try the application. Several bugs in the logic were 
 
 ## Code Testing
 Had to go through each function to test manually in order to see if each line of code did what it was supposed to.
-There was a lot of back and fourth.
+There was a lot of back and forth.
 Had to choose the options yes/no for each delivery and usage and try inputting bad data.
 Had to input batch numbers right and wrong, also dates good and bad formats and same for vaccine names, had to test by trying good and wrong vaccine names.
 Had to go through each step and see if the code worked as it should have per each case given.
-Also had to manally test each menu option and make sure the print statements said the correct action and that each option went to the correct function.
+Also had to manually test each menu option and make sure the print statements said the correct action and that each option went to the correct function.
 It was a tedious task to check each part individually and it consumed a lot of time.
 Once tested and wrong things appeared had to go fix those bugs of which were many.
 
 #### Development and Existing bugs
 The code was going from simple step to step to more complex logic. It started simple and then I came across many bugs as stated above. These bugs were only visible after user testing and requesting individuals to play with the application and think of possibilities that I did not think about. Even with these bugs there is at least one bug that I have thought about but do not have the time frame to cover in this project. The delivery date and expiration date is far more complex than just adding 30 days to the delivery. In fact, my logic adds 30 days to the last delivery but it does not account for the old delivery to be sure out of date and therefore expired. More testing and more development is required to perfect this application and more complex logic is required to cover these refined details on expiration.
 
-There was another bug in the system that is fixed now but the bug was to do with the usage. If the usage was entered again at a later stage for a particular batch and there were already used quantities present in the system, it did not recognize the present usage to take into account for that vaccine used and it calculated with minusus in the stock left over. Obviously this would have been incorrect as you cannot use more than you had delivered.
+There was another bug in the system that is fixed now but the bug was to do with the usage. If the usage was entered again at a later stage for a particular batch and there were already used quantities present in the system, it did not recognize the present usage to take into account for that vaccine used and it calculated with minuses in the stock left over. Obviously this would have been incorrect as you cannot use more than you had delivered.
 This is to be fixed at a later time outside the scope of this project.
 ![Bug ](discoveredbug.png)
 
 ## Deployment and Development
 #### Deployment on Render
+I deployed my project on Render as I had issues with Heroku. 
 Created Environment variables in Render in applicable Settings.
 1. 'Port'
 2. 'Nodejs`
@@ -159,39 +160,39 @@ I also had to make sure I followed the instruction available on the settings as 
 ![Settings One](set1.png)
 ![Settings Two](set2.png)
 
-I had to make sure to enter all the environemt variables that were not present in the documentation of code institute. Other fields were needed.
-This knowledge could only be acquired through troubleshooting and googling or using open AI to learn what was wrong and how to over come it.
+I had to make sure to enter all the environment variables that were not present in the documentation of code institute. Other fields were needed.
+This knowledge could only be acquired through troubleshooting and googling or using open AI to learn what was wrong and how to overcome it.
 ![alt text](envvariable.png)
 
 The creds file instructions was followed and entered on render.
 ![alt text](credsfile.png)
 
 After many fails the deployment finally succeeded as per screenshots. Logs were available where I could see the progress of the deployment.
-Clearing cache and deployment in the menu was a button i pressed many times.
+Clearing cache and deployment in the menu was a button I pressed many times.
 ![alt text](deployment.png)
 
-Sucessful deployment on render.com
+Successful deployment on render.com
 ![alt text](deployedgreen.png)
 
 #### Guidelines followed:
-- Cloned template as per Code Institure request and used for project as instructed
+- Cloned template as per Code Institute  request and used for project as instructed
 - Code placed in the `run.py` file
 - Dependencies placed in the `requirements.txt` file
 - Added to the `requirements.txt` file as required per project
 - Did not edit any other files or code may not have deployed properly
 - Edited code to deploy on render
-- Ignored too long error E501 as deployed on Render not Hiroku
+- Ignored too long error E501
 
 
 #### Issues on deployment 
 Encountered many issues on the render app but was able to figure it out eventually.
-Used the documentation given by student services but not all the inforamtion was in the instructions.
-Figured out other environmental varaibles had to be introduced through a lot of troubleshooting but I also used the help acquired for the Love Sandwiches run through and was able to apply the knowledge acquired there to this project.
+Used the documentation given by student services but not all the information was in the instructions.
+Figured out other environmental variables had to be introduced through a lot of troubleshooting but I also used the help acquired for the Love Sandwiches run through and was able to apply the knowledge acquired there to this project.
 
 #### Connecting GCP/API
 To had the API connectivity instructions and I followed those from previously learned material.
-Used the Goodle Drive API and Google Shees API.
-Went to the google platform and connected while using the google sheets and the goodle drive api services with created credentials.
+Used the Google Drive API and Google Sheets API.
+Went to the google platform and connected while using the google sheets and the goodge drive api services with created credentials.
 ![API connection](api.png)
 
 ## Credits
