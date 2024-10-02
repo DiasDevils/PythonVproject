@@ -41,32 +41,32 @@ def get_delivery():
         # Batch validation
         while True:
             try:
-                batch = int(input("Step 1. Enter the batch number (Number between 1 and 100): "))
+                batch = int(input("Step 1. Enter batch number (Number 1-100): "))
                 if 1 <= batch <= 100:
                     break
                 else:
                     print("Invalid input. Please enter a number between 1 and 100.")
             except ValueError:
-                print("Invalid input. Please enter a valid number for the batch.")
+                print("Invalid input. Please enter a valid batch number.")
 
         # Date validation (dd/mm/yyyy format and not in the future)
         while True:
-            date_str = input("Step 2. Enter the delivery date in format (dd/mm/yyyy): ")
+            date_str = input("Step 2. Enter delivery date in format (dd/mm/yyyy): ")
             try:
                 delivery_date = datetime.strptime(date_str, "%d/%m/%Y")
                 if delivery_date > datetime.now():
-                    print("The delivery date cannot be in the future. Please enter a valid date.")
+                    print("Delivery date cannot be in future. Please enter a valid date.")
                 elif delivery_date < datetime(2023, 1, 1):
-                    print("The delivery date cannot be earlier than 01/01/2023. Please enter a valid date.")
+                    print("Delivery date cannot be earlier than 01/01/2023. Please enter a valid date.")
                 else:
                     break
             except ValueError:
-                print("Invalid date format. Please enter the date in the format dd/mm/yyyy.")
+                print("Invalid date format. Please enter the date in format dd/mm/yyyy.")
 
         # Vaccine name validation
         valid_vaccines = ["flu-one", "flu-two"]
         while True:
-            vaccine = input("Step 3. Enter the vaccine name (flu-one or flu-two): ").strip().lower()
+            vaccine = input("Step 3. Enter vaccine name (flu-one or flu-two): ").strip().lower()
             if vaccine in valid_vaccines:
                 break
             else:
@@ -75,13 +75,13 @@ def get_delivery():
         # Quantity validation
         while True:
             try:
-                quantity = int(input("Step 4. Enter the quantity of vials delivered (Whole number): "))
+                quantity = int(input("Step 4. Enter quantity of vials delivered (Number 1-50): "))
                 if 1 <= quantity <= 50:
                     break
                 else:
-                    print("Invalid input. Please enter a quantity between 1 and 50.")
+                    print("Invalid input. Please enter quantity between 1 and 50.")
             except ValueError:
-                print("Invalid input. Please enter a valid number for the quantity.")
+                print("Invalid input. Please enter valid quantity number.")
 
         # Create dictionary to store the inputted data
         delivery_data = {
@@ -92,12 +92,12 @@ def get_delivery():
         }
 
         # Print confirmation
-        print(f"The data you entered for delivery is Batch Number {batch}, delivered on {date_str}. The vaccine name is {vaccine} and the quantity is {quantity}")
+        print(f"The data you entered for delivery is Batch Number {batch}\n, delivered on {date_str}.\n The vaccine name is {vaccine} and the quantity is {quantity}")
 
         # Return the data dictionary
         return delivery_data
     else:
-        print("Invalid input. Please answer with 'yes' or 'no'.")
+        print("Invalid input. Please answer 'yes' or 'no'.")
         return get_delivery()
 
 # Function to update the delivery worksheet
@@ -150,8 +150,8 @@ def get_usage():
 
     # Get user input for usage
     while True:
-        batch = input("Enter the batch number for usage: ").strip()
-        vaccine = input("Enter the vaccine name for usage (flu-one or flu-two): ").strip().lower()
+        batch = input("Enter batch number for usage: ").strip()
+        vaccine = input("Enter the vaccine name for usage ('flu-one' or 'flu-two'): ").strip().lower()
         
         if (batch, vaccine) not in delivery_sums:
             print("Error: No matching delivery record found for this batch and vaccine. Please try again.")
@@ -183,81 +183,6 @@ def get_usage():
             }
             print(f"Usage for batch {batch} (vaccine: {vaccine}) successfully recorded.")
             return usage_data
-
-# def get_usage():
-#     # print("Now moving to the used vaccines input...\n")
-#     response = input("Please confirm: Do you need to input USAGE data? ('yes/no'): ").strip().lower()
-
-#     if response == "no":
-#         print("Skipping usage input.")
-#         return None
-#     elif response == "yes":
-#         print("Please enter vaccine usage data.")
-
-# # Batch validation
-#         while True:
-#             while True:
-#                 try:
-#                     batch = int(input("Enter the batch number (Number between 1 and 100):"))
-#                     if 1 <= batch <= 100:
-#                         break
-#                     else:
-#                         print("Invalid input. Please enter a number between 1 and 100.")
-#                 except ValueError:
-#                     print("Invalid input: Please enter a valid number for the batch.")
-
-#             # Vaccine name validation
-#             valid_vaccines = ["flu-one", "flu-two"]
-#             while True:
-#                 vaccine = input("Step 3. Enter the vaccine name (flu-one or flu-two): ").strip().lower()
-#                 if vaccine in valid_vaccines:
-#                     break
-#                 else:
-#                     print("Invalid vaccine name. Please enter 'flu-one' or 'flu-two'.")
-
-#             # Quantity Validation
-#             # Retrieve delivered quantity for the specified batch and vaccine
-#             delivery_worksheet = SHEET.worksheet('delivery')
-#             delivery_data = delivery_worksheet.get_all_values()[1:]
-#             delivered_quantity = 0
-#             # Check if the batch and vaccine combination exists in delivery
-#             for row in delivery_data:
-#                 if int(row[0]) == batch and row[2] == vaccine:
-#                     print(delivery_data)
-#                     delivered_quantity += int(row[3])
-#             # Check if there's no delivery data for the batch and vaccine
-#             if delivered_quantity == 0:
-#                 print(f"No delivery data found for Batch {batch} and Vaccine {vaccine}. Please enter a valid usage.")
-#                 continue
-
-#             # Quantity Validation Loop
-#             while True:
-#                 try:
-#                     quantity_used = int(input("Enter the quantity of vials used (Whole Number):"))
-#                     if quantity_used < 1:
-#                         print("Quantity used must be at least 1.")
-#                     elif quantity_used > 50:
-#                         print("Quantity used must not exceed 50.")
-#                     elif quantity_used > delivered_quantity:
-#                         print(f"Quantity used cannot exceed the delivered quantity of {delivered_quantity}.")
-#                     else:
-#                         break
-#                 except ValueError:
-#                     print("Invalid input. Please enter a valid number for the quantity used.")
-
-#             # Create usage dictionary to store data
-#             usage_data = {
-#                 "batch": batch,
-#                 "vaccine": vaccine,
-#                 "quantity_used": quantity_used
-#             }
-
-#             # Print confirmation
-#             print(f"The data you entered for usage is Batch Number {batch} of vaccine name {vaccine} with {quantity_used} vials used.")
-#             return usage_data
-#     else:
-#         print("Invalid input. Please answer 'yes' or 'no'.")
-#         return get_usage()
 
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
@@ -346,7 +271,7 @@ def calculate_stock():
 
 
 def update_stock(stock_data):
-    print("Updating stock data...\n")
+    print("Retrieving stock data...\n")
     stock_worksheet = SHEET.worksheet('stock')
     stock_worksheet.clear()
     headers = ['B', 'VN', 'DQ', 'UQ', 'SK', 'LDD', 'ED', "ST"]
@@ -354,7 +279,7 @@ def update_stock(stock_data):
 
     for row in stock_data:
         stock_worksheet.append_row(row)
-    print("Stock data updated successfully!\n")
+    print("Stock data retrieved successfully!\n")
     print("Please see Vaccine Stock table below.\n")
 
     print("Important to know:\n")

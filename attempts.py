@@ -1,3 +1,81 @@
+# ######################## removed ############################
+# def get_usage():
+#     # print("Now moving to the used vaccines input...\n")
+#     response = input("Please confirm: Do you need to input USAGE data? ('yes/no'): ").strip().lower()
+
+#     if response == "no":
+#         print("Skipping usage input.")
+#         return None
+#     elif response == "yes":
+#         print("Please enter vaccine usage data.")
+
+# # Batch validation
+#         while True:
+#             while True:
+#                 try:
+#                     batch = int(input("Enter the batch number (Number between 1 and 100):"))
+#                     if 1 <= batch <= 100:
+#                         break
+#                     else:
+#                         print("Invalid input. Please enter a number between 1 and 100.")
+#                 except ValueError:
+#                     print("Invalid input: Please enter a valid number for the batch.")
+
+#             # Vaccine name validation
+#             valid_vaccines = ["flu-one", "flu-two"]
+#             while True:
+#                 vaccine = input("Step 3. Enter the vaccine name (flu-one or flu-two): ").strip().lower()
+#                 if vaccine in valid_vaccines:
+#                     break
+#                 else:
+#                     print("Invalid vaccine name. Please enter 'flu-one' or 'flu-two'.")
+
+#             # Quantity Validation
+#             # Retrieve delivered quantity for the specified batch and vaccine
+#             delivery_worksheet = SHEET.worksheet('delivery')
+#             delivery_data = delivery_worksheet.get_all_values()[1:]
+#             delivered_quantity = 0
+#             # Check if the batch and vaccine combination exists in delivery
+#             for row in delivery_data:
+#                 if int(row[0]) == batch and row[2] == vaccine:
+#                     print(delivery_data)
+#                     delivered_quantity += int(row[3])
+#             # Check if there's no delivery data for the batch and vaccine
+#             if delivered_quantity == 0:
+#                 print(f"No delivery data found for Batch {batch} and Vaccine {vaccine}. Please enter a valid usage.")
+#                 continue
+
+#             # Quantity Validation Loop
+#             while True:
+#                 try:
+#                     quantity_used = int(input("Enter the quantity of vials used (Whole Number):"))
+#                     if quantity_used < 1:
+#                         print("Quantity used must be at least 1.")
+#                     elif quantity_used > 50:
+#                         print("Quantity used must not exceed 50.")
+#                     elif quantity_used > delivered_quantity:
+#                         print(f"Quantity used cannot exceed the delivered quantity of {delivered_quantity}.")
+#                     else:
+#                         break
+#                 except ValueError:
+#                     print("Invalid input. Please enter a valid number for the quantity used.")
+
+#             # Create usage dictionary to store data
+#             usage_data = {
+#                 "batch": batch,
+#                 "vaccine": vaccine,
+#                 "quantity_used": quantity_used
+#             }
+
+#             # Print confirmation
+#             print(f"The data you entered for usage is Batch Number {batch} of vaccine name {vaccine} with {quantity_used} vials used.")
+#             return usage_data
+#     else:
+#         print("Invalid input. Please answer 'yes' or 'no'.")
+#         return get_usage()
+# ####################### end ##############################
+
+
 # ############### DEPLOYED ##########################
 
 ''' """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" '''
