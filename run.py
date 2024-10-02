@@ -187,7 +187,7 @@ def get_usage():
         # Check if the total usage exceeds the total delivered quantity
         total_used = usage_sums.get((batch, vaccine),0)
         total_delivered = delivery_sums[(batch, vaccine)]
-        remaining_stock - total_delivered - total_used
+        remaining_stock = total_delivered - total_used
 
         if quantity_used > remaining_stock:
             print(f"Warning:You only have {remaining_stock} units left for batch {batch} (vaccine: {vaccine}).")
