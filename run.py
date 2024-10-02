@@ -282,13 +282,16 @@ def update_stock(stock_data):
     print("Stock data retrieved successfully!\n")
     print("Please see Vaccine Stock table below.\n")
 
-    print("Important to know:\n")
+    print("Please Note")
+    print('----------------------------------------------------')
     print("B   = Batch Number         ||  VN = Vaccine Name")
     print("DQ  = Delivered Quantity   ||  UQ = Used Quantity")
     print("SK  = Stock Available Now  ||  ST = Status ")
     print("LDD = Last Delivery Date   ||  ED = Expiry Date \n")
+    print('----------------------------------------------------')
     print("Current Stock Data:")
     print(tabulate(stock_data, headers=headers, tablefmt='grid'))
+    print('----------------------------------------------------')
 
 
 ''' """"""""""""""""""""""""""""""""""""""""""""""""" '''
