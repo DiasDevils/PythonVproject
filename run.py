@@ -115,7 +115,7 @@ def update_delivery(data):
 
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
-# 3. Get usage input from user #
+# 3. Function to Get usage input from user #
 ''' """"""""""""""""""""""""""""""""""""""""" '''
 
 
@@ -157,7 +157,7 @@ def get_usage():
     while True:
         batch = input("Enter batch number for usage: ").strip()
         vaccine = input("Enter the vaccine name for usage ('flu-one' or 'flu-two'): ").strip().lower()
-        
+
         if (batch, vaccine) not in delivery_sums:
             print("Error: No matching delivery record found for this batch and vaccine. Please try again.")
             continue
@@ -172,7 +172,7 @@ def get_usage():
                 break
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
-        
+
         # Check if the total usage exceeds the total delivered quantity
         total_used = usage_sums.get((batch, vaccine), 0) + quantity_used
         total_delivered = delivery_sums[(batch, vaccine)]
@@ -209,24 +209,30 @@ def update_use(data):
 
 
 def calculate_stock():
+    # Get the delivery data from the 'delivery' worksheet, skipping the header row.
     delivery_worksheet = SHEET.worksheet('delivery')
     delivery_data = delivery_worksheet.get_all_values()[1:]
 
+    # same as above for usage
     usage_worksheet = SHEET.worksheet('used')
     usage_data = usage_worksheet.get_all_values()[1:]
 
+    # empty dic to store data
     delivery_sums = {}
     latest_delivery_dates = {}
     usage_sums = {}
 
+    # Process each row of delivery, calculate total deliveries, track the latest delivery date
     for row in delivery_data:
         batch = row[0]
         delivery_date = datetime.strptime(row[1], "%d/%m/%Y")
         vaccine = row[2]
         quantity = int(row[3])
 
+        # unique key using the batch and vaccine
         key = (batch, vaccine)
 
+        # Sum delivered quantities for each batch vac combination
         if key in delivery_sums:
             delivery_sums[key] += quantity
         else:
@@ -238,6 +244,7 @@ def calculate_stock():
         else:
             latest_delivery_dates[key] = delivery_date
 
+    # Process each row of usage data to calculate the total usage for each batch and vaccine
     for row in usage_data:
         batch = row[0]
         vaccine = row[1]
@@ -245,48 +252,59 @@ def calculate_stock():
 
         key = (batch, vaccine)
 
+        # Sum the used quantities for each batch and vaccine combination.
         if key in usage_sums:
             usage_sums[key] += quantity_used
         else:
             usage_sums[key] = quantity_used
 
+    # list to store stuck date
     stock_data = []
+
+    #  Loop through delivery data to calculate the stock left for each batch and vac
     for key, delivered_qty in delivery_sums.items():
         batch, vaccine = key
         used_qty = usage_sums.get(key, 0)
         stock_left = delivered_qty - used_qty
 
+        # Get the latest delivery date for this batch and vac & calc expiry
         last_delivery_date = latest_delivery_dates[key]
         expiry_date = last_delivery_date + timedelta(days=30)
 
+        # convert for display
         last_delivery_str = last_delivery_date.strftime("%d/%m/%Y")
         expiry_date_str = expiry_date.strftime("%d/%m/%Y")
 
+        # Determine the status of the stock based on if it's expired or in date
         today = datetime.today()
         status = "Expired" if expiry_date <= today else "In Date"
 
+        # Append the stock data for this batch and vaccine to the list
         stock_data.append([batch, vaccine, delivered_qty, used_qty, stock_left, last_delivery_str, expiry_date_str, status])
 
     return stock_data
 
 
 ''' """""""""""""""""""""""""""" '''
-# 6.Function to Updating stock function #
+# 6. Function to Updating stock function #
 ''' """""""""""""""""""""""""""" '''
 
 
 def update_stock(stock_data):
     print("Retrieving stock data...\n")
+    # accessing and clearing previous stock sheet and def headers
     stock_worksheet = SHEET.worksheet('stock')
     stock_worksheet.clear()
     headers = ['B', 'VN', 'DQ', 'UQ', 'SK', 'LDD', 'ED', "ST"]
     stock_worksheet.append_row(headers)
 
+    # loop through each row and append to stock sheet
     for row in stock_data:
         stock_worksheet.append_row(row)
     print("Stock data retrieved successfully!\n")
     print("Please see Vaccine Stock table below.\n")
 
+    # print stock table , info , separators
     print("Please Note")
     print('----------------------------------------------------')
     print("B   = Batch Number         ||  VN = Vaccine Name")
@@ -307,6 +325,7 @@ def update_stock(stock_data):
 def main_menu():
     print("Welcome to the Flu Vaccine Stock Tracking System (FVST)")
 
+    # main menu for user
     while True:
         print("Please follow instructions for the FVST System below.")
         print('---------------------')
