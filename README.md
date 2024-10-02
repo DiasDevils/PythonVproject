@@ -42,41 +42,41 @@ As the creator of the application and user I needed and wanted to make sure of t
 The user of this application will be a person in the medical sphere that must record deliveries and usage of vaccines. This way at the end of the month they have information that could be passed to a main institution and statistical information pulled from the data available. The application is to be very easy to use and not tedious. Steps to be skipped if necessary.
 
 ## Code logic
-![Coding Logic](logicexcel.png)
+![Coding Logic](docs/logicexcel.png)
 First I had to understand what a user would need and how it would actually work to calculate a stock.
 For this I used a google sheet that was to collect the deliveries and usages and then these data points would be used to calculate the stock. This google sheet was paramount to the design of how the application would work and the logic from how it should operate in a manual setting and then was applied/transferred to the application. This step was crucial in the design.
 
 ## Flow chart
-![Vacstock Logic and User charts.](vacstock.drawio.png)
+![Vacstock Logic and User charts.](docs/vacstock.drawio.png)
 I drew this chart to understand and clarify how the program was going to work. This design on flow chart helped ne comprehend and guide me to bring the application to fruition. A clearly defined flow helped code and have the correct flow.
 Both the google sheet flow calculation and the flow chart design paved the way for the application to function correctly.
 
 ## Data storage
 The data is stored in a google sheet. All data entered gets saved down and then calculations are made from this stored data. It is imperative for data to be stored in order to calculate the stock. It is also vital that data is correctly entered. Without good data no application could perform adequate steps.
-![DataStorage](googlesheet.png)
+![DataStorage](docs/googlesheet.png)
 
 ## Features 
 The start of the program it explains clearly what the system is and what it is for.
 It also gives clear instructions by options needed for the system to work.
-![PythonVproject start](start.png)
+![PythonVproject start](docs/start.png)
 
 The main menu asks for an option to be chosen and it is clear that an option must be chosen to proceed.
-![Option Ask](selectoption.png)
+![Option Ask](docs/selectoption.png)
 
 Instructions are also available as you go along and validation is taking place along the way to make sure good data is entered.
-![PythonVproject validation](instructvalidat.png)
+![PythonVproject validation](docs/instructvalidat.png)
 
 Data validation transpires along the input of data to make sure the data is correct.
-![Validation of data](validations.png)
+![Validation of data](docs/validations.png)
 
 If the stock used is not in the delivery or if the used exceeds delivery the application lets the user know.
-![Cannot be more](cannotbemore.png)
+![Cannot be more](docs/cannotbemore.png)
 
 The user can see the stock table. I think it is important for the user to be aware of the contents they have in the practice in order to plan for next order or riddance of expired stock should they have it on the shelves.
-![Stock Table](tablestock.png)
+![Stock Table](docs/tablestock.png)
 
 The user can just exit if they changed their mind about using the system or they were interrupted. 
-![Exit option](exit.png)
+![Exit option](docs/exit.png)
 
 ## Future features
 I had in mind something more simple to be honest but it became more complex as it went along.
@@ -106,7 +106,7 @@ Another feature could be not to allow same batch number for more deliveries for 
 ## Testing 
 The CSS, HTML, Javascript were provided by the Code Institute for this project, thus did not test for these.
 The code I tested was the python code for this project on https://pep8ci.herokuapp.com/ to validate my code
-![CodeTest](<python authenticator pep8ci.png>)
+![CodeTest](<docs/python authenticator pep8ci.png>)
 
 Received a couple of white space errors such as:
 * W291(trailing whitespace).
@@ -142,7 +142,7 @@ The code was going from simple step to step to more complex logic. It started si
 
 There was another bug in the system that is fixed now but the bug was to do with the usage. If the usage was entered again at a later stage for a particular batch and there were already used quantities present in the system, it did not recognize the present usage to take into account for that vaccine used and it calculated with minuses in the stock left over. Obviously this would have been incorrect as you cannot use more than you had delivered.
 This is to be fixed at a later time outside the scope of this project.
-![Bug ](discoveredbug.png)
+![Bug ](docs/discoveredbug.png)
 
 ## Deployment and Development
 #### Deployment on Render
@@ -157,22 +157,22 @@ Connected my GitHub repository and deployed.
 
 For deployment I needed to make sure the python version was the same in both entities, gitpod and render.
 I also had to make sure I followed the instruction available on the settings as per screenshot below.
-![Settings One](set1.png)
-![Settings Two](set2.png)
+![Settings One](docs/set1.png)
+![Settings Two](docs/set2.png)
 
 I had to make sure to enter all the environment variables that were not present in the documentation of code institute. Other fields were needed.
 This knowledge could only be acquired through troubleshooting and googling or using open AI to learn what was wrong and how to overcome it.
-![alt text](envvariable.png)
+![Var1](docs/envvariable.png)
 
 The creds file instructions was followed and entered on render.
-![alt text](credsfile.png)
+![CredFile](docs/credsfile.png)
 
 After many fails the deployment finally succeeded as per screenshots. Logs were available where I could see the progress of the deployment.
 Clearing cache and deployment in the menu was a button I pressed many times.
-![alt text](deployment.png)
+![Deploy](docs/deployment.png)
 
 Successful deployment on render.com
-![alt text](deployedgreen.png)
+![Deploy2](docs/deployedgreen.png)
 
 #### Guidelines followed:
 - Cloned template as per Code Institute  request and used for project as instructed
@@ -193,7 +193,7 @@ Figured out other environmental variables had to be introduced through a lot of 
 To had the API connectivity instructions and I followed those from previously learned material.
 Used the Google Drive API and Google Sheets API.
 Went to the google platform and connected while using the google sheets and the goodge drive api services with created credentials.
-![API connection](api.png)
+![API connection](docs/api.png)
 
 ## Credits
 Code Institute code template to create this project.
