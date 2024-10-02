@@ -86,9 +86,9 @@ I had in mind something more simple to be honest but it became more complex as i
 I feel this system needs more development.
 The expiry date calculation should be properly thought out and a more complex logic developed.
 I feel the system could really improve as it does not feel smooth.
-It feels a annoying once I use it again and again, therefore more refinement is merited.
+It feels annoying once I use it again and again, therefore more refinement is merited.
 A future feature could be developed that if a delivery has been fulfilled and all stock is used then not let the user try to add more usage.
-Another feature could be not to allow same batch number for more deliveries for that batch number.
+Another feature could be not to allow same batch number for more deliveries for that same batch number. This would remove room for errors and it would remove the current bug of delivery date calculation.
 
 ## Technologies used 
 * Draw.io for making charts
