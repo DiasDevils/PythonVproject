@@ -104,7 +104,7 @@ def get_delivery():
 
 
 def update_delivery(data):
-    print("Updating deliveries...\n")
+    print("\n Updating deliveries...\n")
     delivery_worksheet = SHEET.worksheet('delivery')
     delivery_row = list(data.values())
     delivery_worksheet.append_row(delivery_row)
