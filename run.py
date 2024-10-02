@@ -168,22 +168,45 @@ def get_usage():
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
         
+        # # Check if the total usage exceeds the total delivered quantity
+        # total_used = usage_sums.get((batch, vaccine), 0) + quantity_used
+        # total_delivered = delivery_sums[(batch, vaccine)]
+
+        # if total_used > total_delivered:
+        #     print(f"Error: The total usage ({total_used}) exceeds the total delivered quantity ({total_delivered}) for batch {batch} and vaccine {vaccine}. Please try again.")
+        # else:
+        #     # Update the usage data
+        #     usage_data = {
+        #         "batch": batch,
+        #         "vaccine": vaccine,
+        #         "quantity_used": quantity_used
+        #     }
+        #     print(f"Usage for batch {batch} (vaccine: {vaccine}) successfully recorded.")
+        #     return usage_data
+        
         # Check if the total usage exceeds the total delivered quantity
-        total_used = usage_sums.get((batch, vaccine), 0) + quantity_used
+        total_used = usage_sums.get((batch, vaccine),0)
         total_delivered = delivery_sums[(batch, vaccine)]
+        remaining_stock - total_delivered - total_used
 
-        if total_used > total_delivered:
-            print(f"Error: The total usage ({total_used}) exceeds the total delivered quantity ({total_delivered}) for batch {batch} and vaccine {vaccine}. Please try again.")
-        else:
-            # Update the usage data
-            usage_data = {
-                "batch": batch,
-                "vaccine": vaccine,
-                "quantity_used": quantity_used
-            }
-            print(f"Usage for batch {batch} (vaccine: {vaccine}) successfully recorded.")
-            return usage_data
+        if quantity_used > remaining_stock:
+            print(f"Warning:You only have {remaining_stock} units left for batch {batch} (vaccine: {vaccine}).")
+            choice = input(f"Would you like to record the remaining {remaining_stock} units? (yes/no): ").strip().lower()
+            if choice == 'yes':
+                quantity_used = remaining_stock
+            else:
+                print("Please enter a valid quantity that doesn't exceed the remaining stock.")
+            continue
 
+        usage_data = {"batch": batch,
+                       "vaccine": vaccine,
+                       "quantity_used": quantity_used
+        }
+        print(f'Usage for batch {batch} vaccine: {vaccine} successfully recorded')
+        return usage_data
+        
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid number.")
 
 ''' """"""""""""""""""""""""""""""""""""""""" '''
 # Function to update the usage worksheet
