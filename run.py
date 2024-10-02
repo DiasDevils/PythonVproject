@@ -92,7 +92,7 @@ def get_delivery():
         }
 
         # Print confirmation
-        print(f"The data you entered for delivery is Batch Number {batch}\n, delivered on {date_str}.\n The vaccine name is {vaccine} and the quantity is {quantity}")
+        print(f"The data you entered for delivery is Batch Number {batch},\n delivered on {date_str}.\n The vaccine name is {vaccine}, \n quantity {quantity}")
 
         # Return the data dictionary
         return delivery_data
