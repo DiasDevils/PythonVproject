@@ -127,6 +127,16 @@ Requested several people to try the application. Several bugs in the logic were 
 - batch number could be a negative number - bug fixed 
 - quantity allowed to order was missing - bug fixed
 
+## Code Testing
+Had to go through each function to test manually in order to see if each line of code did what it was supposed to.
+There was a lot of back and fourth.
+Had to choose the options yes/no for each delivery and usage and try inputting bad data.
+Had to input batch numbers right and wrong, also dates good and bad formats and same for vaccine names, had to test by trying good and wrong vaccine names.
+Had to go through each step and see if the code worked as it should have per each case given.
+Also had to manally test each menu option and make sure the print statements said the correct action and that each option went to the correct function.
+It was a tedious task to check each part individually and it consumed a lot of time.
+Once tested and wrong things appeared had to go fix those bugs of which were many.
+
 #### Development and Existing bugs
 The code was going from simple step to step to more complex logic. It started simple and then I came across many bugs as stated above. These bugs were only visible after user testing and requesting individuals to play with the application and think of possibilities that I did not think about. Even with these bugs there is at least one bug that I have thought about but do not have the time frame to cover in this project. The delivery date and expiration date is far more complex than just adding 30 days to the delivery. In fact, my logic adds 30 days to the last delivery but it does not account for the old delivery to be sure out of date and therefore expired. More testing and more development is required to perfect this application and more complex logic is required to cover these refined details on expiration.
 
