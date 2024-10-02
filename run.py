@@ -301,12 +301,14 @@ def main_menu():
 
     while True:
         print("Please follow instructions for the FVST System below.")
+        print('---------------------')
         print('Menu:')
         print('---------------------')
         print('Option 1.Input Delivery Data')
         print('Option 2.Input Usage Data')
         print('Option 3.View Stock Table')
         print('Option 4.Exit')
+        print('---------------------')
         choice = input('Please Select Option 1,2,3 or 4 to continue:')
         if choice == '1':
             delivery_data = get_delivery()
